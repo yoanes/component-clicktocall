@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+    <package name="clicktocall-component-default" namespace="/" extends="testbed-default">
+
+        <!-- Home Page Action -->
+        <action name="home" class="homeAction">
+            <result type="redirect-action">
+                <param name="actionName">home</param>
+                <param name="namespace">/clicktocall</param>
+            </result>            
+        </action>
+
+    </package>
+
+    <!-- Add packages here -->
+    <include file="../view/clicktocall/clicktocall.xml"/>
+</struts>

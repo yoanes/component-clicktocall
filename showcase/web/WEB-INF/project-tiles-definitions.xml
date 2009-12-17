@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+    <!-- ======================================================================================= -->
+    <!-- Base Layout                                                                             -->
+    <!-- ======================================================================================= -->
+
+    <definition name="clicktocall.component.showcase.base" extends="testbed.base">
+
+        <put-attribute name="title" value="clicktocall-component-showcase"/>
+    </definition>
+
+    <!-- ======================================================================================= -->
+    <!-- Click to call.                                                                          -->
+    <!-- ======================================================================================= -->
+    
+    <definition name="clicktocall.component.showcase.phoneAndFaxNumbers" extends="clicktocall.component.showcase.base">
+
+        <put-attribute name="header" value="/WEB-INF/view/clicktocall/jsp/phoneAndFaxNumbersHeader.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/view/clicktocall/jsp/phoneAndFaxNumbersBody.jsp"/>
+    </definition>
+    
+    <definition name="clicktocall.component.showcase.calling" extends="clicktocall.component.showcase.base">
+
+        <put-attribute name="metaRefresh" value="/WEB-INF/view/clicktocall/jsp/callingHead.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/view/clicktocall/jsp/callingBody.jsp"/>
+    </definition>
+    
+</tiles-definitions>
