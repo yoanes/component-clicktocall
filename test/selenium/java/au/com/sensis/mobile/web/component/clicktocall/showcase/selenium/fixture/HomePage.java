@@ -22,7 +22,6 @@ public class HomePage extends AbstractPageFixture {
 
     @Override
     protected void assertBody() {
-        // top links
-        assertTrue(getBrowser().isTextPresent("TODO"));
+        assertTrue(getBrowser().isTextPresent("Phone and fax numbers"));
     }
 }

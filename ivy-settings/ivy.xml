@@ -22,7 +22,7 @@
   - for each separate component.
   -->
 <ivy-module version="2.0" xmlns:e="http://ant.apache.org/ivy/extra">
-    <info organisation="com.sensis" module="clicktocall-component"/>
+    <info organisation="com.sensis" module="wl-clicktocall-component"/>
 
     <configurations>
         <!--  
@@ -46,14 +46,14 @@
     </configurations>
     
     <publications>
-        <artifact name="clicktocall-component" type="jar" ext="jar" conf="default"/>
-        <artifact name="clicktocall-component-test" type="jar" ext="jar" conf="test"/>
+        <artifact name="wl-clicktocall-component" type="jar" ext="jar" conf="default"/>
+        <artifact name="wl-clicktocall-component-test" type="jar" ext="jar" conf="test"/>
     </publications>
 
     <dependencies>
     
         <!-- Shared build scripts required by this project. -->    
-        <dependency org="com.sensis" name="wl-build-scripts" rev="1.0+" conf="buildBootstrap->default" />
+        <dependency org="com.sensis" name="wl-build-scripts" rev="1.0.6" conf="buildBootstrap->default" />
         
         <!-- Commons -->
         <dependency org="apache" name="commons-lang" rev="2.4" conf="default" />
@@ -128,18 +128,18 @@
         <!-- Testing -->
         <dependency org="junit" name="junit" rev="4.4" conf="test->default"/>
         <dependency org="javax.servlet" name="servlet-api" rev="2.4" conf="test->default"/>
-        <dependency org="com.sensis" name="sdpCommon-testing" rev="0.4-005" conf="test->default"/>
+        <dependency org="com.sensis" name="sdpCommon-testing" rev="0.4-006" conf="test->default"/>
         <dependency org="org.springframework" name="spring-test" rev="2.5.5" conf="test->default"/>
         <dependency org="hsqldb" name="hsqldb" rev="1.8.0.1" conf="test->default"/>
-        <dependency org="com.thoughtworks" name="selenium-java-client-driver" rev="1.0-beta-1" conf="test->default"/>
-        <dependency org="com.thoughtworks" name="selenium-server" rev="1.0-beta-1" conf="test->default"/>
+        <dependency org="com.thoughtworks" name="selenium-java-client-driver" rev="1.0.1" conf="test->default"/>
+        <dependency org="com.thoughtworks" name="selenium-server" rev="1.0.1" conf="test->default"/>
+        <dependency org="com.unitedinternet" name="logging-selenium" rev="1.2" conf="test->default"/>
         <dependency org="com.vladium" name="emma" rev="2.0" conf="test->default"/>
 
         <!--
           - Dependencies on components.
           -->
-        <dependency org="com.sensis" name="core-component" rev="1.0+" conf="default,test"/>
-        
-        <dependency org="com.sensis" name="wl-webapp-testbed" rev="1.0+" conf="showcase->default"/>        
+        <dependency org="com.sensis" name="wl-core-component" rev="1.0.6" conf="default,test"/>
+        <dependency org="com.sensis" name="wl-webapp-testbed" rev="1.0.6" conf="showcase->default"/>        
     </dependencies>
 </ivy-module>

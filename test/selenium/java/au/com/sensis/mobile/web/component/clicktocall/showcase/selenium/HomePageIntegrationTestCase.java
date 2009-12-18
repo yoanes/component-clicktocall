@@ -1,5 +1,8 @@
 package au.com.sensis.mobile.web.component.clicktocall.showcase.selenium;
 
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
 import au.com.sensis.mobile.web.component.clicktocall.showcase.selenium.fixture.HomePage;
 
 /**
@@ -13,14 +16,52 @@ import au.com.sensis.mobile.web.component.clicktocall.showcase.selenium.fixture.
  */
 public class HomePageIntegrationTestCase extends AbstractSeleniumIntegrationTestCase {
 
+    private static Logger logger = Logger.getLogger(HomePageIntegrationTestCase.class);
+
     /**
      * Opens the map page for an address.
      */
-    public void testGetMap() throws Exception {
+    @Test
+    public void testCallPhoneNumber() throws Exception {
+        getSelenium().setContext("testCallPhoneNumber()");
+        getSelenium()
+                .addCustomRequestHeader(
+                        "user-agent",
+                        "BlackBerry9000/4.6.0.266 Profile/MIDP-2.0 "
+                                + "Configuration/CLDC-1.1 VendorID/122 UP.Link/6.5.1.3.0px");
         openHome();
 
         final HomePage homePage =
-            (HomePage) getPageFixtureFactory().createPageFixture(HomePage.class);
-//        homePage.clickOnGetMap();
+                (HomePage) getPageFixtureFactory().createPageFixture(
+                        HomePage.class);
+//        final File file = new File("testCallPhoneNumber-homePage.png");
+//        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
+        // homePage.clickOnGetMap();
+
+    }
+
+    /**
+     * Opens the map page for an address.
+     *
+     * TODO: dummy test to see what logging-selenium reporting in the superclass does
+     * with multiple tests.
+     */
+    @Test
+    public void testCallPhoneNumber2() throws Exception {
+        getSelenium().setContext("testCallPhoneNumber2()");
+        getSelenium()
+        .addCustomRequestHeader(
+                "user-agent",
+                "BlackBerry9000/4.6.0.266 Profile/MIDP-2.0 "
+                + "Configuration/CLDC-1.1 VendorID/122 UP.Link/6.5.1.3.0px");
+        openHome();
+
+        final HomePage homePage =
+            (HomePage) getPageFixtureFactory().createPageFixture(
+                    HomePage.class);
+//        final File file = new File("testCallPhoneNumber-homePage.png");
+//        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
+        // homePage.clickOnGetMap();
+
     }
 }
