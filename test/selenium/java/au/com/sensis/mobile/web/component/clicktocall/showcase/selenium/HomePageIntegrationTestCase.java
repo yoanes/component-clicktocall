@@ -1,5 +1,7 @@
 package au.com.sensis.mobile.web.component.clicktocall.showcase.selenium;
 
+import java.io.File;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -7,8 +9,6 @@ import au.com.sensis.mobile.web.component.clicktocall.showcase.selenium.fixture.
 
 /**
  * Tests the home page.
- *
- * TODO
  *
  * In order to run this test start tomcat, then start the selenium server, run this as a JUnit test.
  *
@@ -24,6 +24,12 @@ public class HomePageIntegrationTestCase extends AbstractSeleniumIntegrationTest
     @Test
     public void testCallPhoneNumber() throws Exception {
         getSelenium().setContext("testCallPhoneNumber()");
+
+        // TODO: setting of the user agent does not work, even if you start selenium RC
+        // using "-proxyInjectionMode". If we can't get tihs to work, we can't really write
+        // any meaningful selenium tests for this click to call component.
+        // Maybe an alternative would be to start our own inprocess proxy (maybe via Jetty)
+        // can proxy the HTTP requests but override the user agent header.
         getSelenium()
                 .addCustomRequestHeader(
                         "user-agent",
@@ -34,34 +40,10 @@ public class HomePageIntegrationTestCase extends AbstractSeleniumIntegrationTest
         final HomePage homePage =
                 (HomePage) getPageFixtureFactory().createPageFixture(
                         HomePage.class);
-//        final File file = new File("testCallPhoneNumber-homePage.png");
-//        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
-        // homePage.clickOnGetMap();
 
+        // TODO: temporary code to see if the user agent setting worked (see TODO above).
+        final File file = new File("testCallPhoneNumber-homePage.png");
+        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
     }
 
-    /**
-     * Opens the map page for an address.
-     *
-     * TODO: dummy test to see what logging-selenium reporting in the superclass does
-     * with multiple tests.
-     */
-    @Test
-    public void testCallPhoneNumber2() throws Exception {
-        getSelenium().setContext("testCallPhoneNumber2()");
-        getSelenium()
-        .addCustomRequestHeader(
-                "user-agent",
-                "BlackBerry9000/4.6.0.266 Profile/MIDP-2.0 "
-                + "Configuration/CLDC-1.1 VendorID/122 UP.Link/6.5.1.3.0px");
-        openHome();
-
-        final HomePage homePage =
-            (HomePage) getPageFixtureFactory().createPageFixture(
-                    HomePage.class);
-//        final File file = new File("testCallPhoneNumber-homePage.png");
-//        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
-        // homePage.clickOnGetMap();
-
-    }
 }
