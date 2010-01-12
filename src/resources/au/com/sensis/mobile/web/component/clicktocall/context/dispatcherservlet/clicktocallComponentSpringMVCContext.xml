@@ -28,6 +28,6 @@
     <bean id="clicktocall.comp.getJavaScriptBundle"
         parent="core.comp.abstractGetJavaScriptBundle"
         init-method="validateState">
-        <property name="contextRootComponentPrefix" value="@{core.env.context.root.component.prefix}/@{clicktocall.comp.name}"/>
+        <property name="contextRootComponentPrefix" value="@{core.env.context.root.component.prefix}@{clicktocall.comp.name}/"/>
     </bean>
 </beans>

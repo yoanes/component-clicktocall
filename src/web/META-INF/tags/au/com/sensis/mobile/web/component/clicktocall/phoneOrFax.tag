@@ -20,6 +20,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="core" uri="/au/com/sensis/mobile/web/component/core/core.tld"%>
 <%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/logging/logging.tld"%>
 
 <%@ attribute name="device" required="true" 
@@ -41,6 +42,7 @@
 <%-- Set the default resource bundle for the current tag file. --%>    
 <fmt:setBundle basename="au.com.sensis.mobile.web.component.clicktocall.clicktocall-component" />    
 
+<%-- Figure out the name of the current component.--%>
 <c:set var="componentName">
     <fmt:message key="comp.name" />
 </c:set>
@@ -53,18 +55,19 @@
 
     <c:otherwise>
 
-        <span class="${phoneClass}">
+        <core:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
+        <span id="${phoneNumberId}" class="${phoneClass}">
 
             <c:choose>
                 <c:when test="${device.clickToCallSupported}">
                     <a href="<c:out value='${clickToCallUrl}'/>">
                         <object src="/comp/clicktocall/images/furniture/callIcon.mimg" alt="Call" />
-                        <span id="${componentName}-phoneNumber">${phoneOrFax.displayFormattedNumber}</span>
+                        <span>${phoneOrFax.displayFormattedNumber}</span>
                     </a>
                 </c:when>
     
                 <c:otherwise>
-                    <span id="${componentName}-phoneNumber">${phoneOrFax.displayFormattedNumber}</span>
+                    <span>${phoneOrFax.displayFormattedNumber}</span>
                 </c:otherwise>
                 
             </c:choose>

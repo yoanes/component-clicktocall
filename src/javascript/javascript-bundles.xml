@@ -3,23 +3,10 @@
     xmlns:bs="http://mobile.sensis.com.au/build-scripts"
     xsi:schemaLocation="http://mobile.sensis.com.au/build-scripts au.com.sensis.mobile.bundles.xsd">
     
-    <!--
-      - Example:     
-      
-        <bundles basename="map-component" subpackage="map">
-            <bundle name="common" abstract="true">
-                <fileset dir="${src.javascript.dir}/device-invariant">
-                </fileset>
-            </bundle>
-            <bundle name="default" parent="common">
-                <fileset dir="${src.javascript.dir}/device-variant/default">
-                </fileset>
-            </bundle>
-            <bundle name="iphone" parent="common">
-                <fileset dir="${src.javascript.dir}/device-variant/iphone">
-                </fileset>
-            </bundle>
-        </bundles>
-    
-     -->
+    <bundles basename="clicktocall-component" subpackage="clicktocall">
+        <bundle name="default">
+            <fileset dir="${src.javascript.dir}/clicktocall/device-invariant">
+            </fileset>
+        </bundle>
+    </bundles>
 </bs:bundlesConfig>

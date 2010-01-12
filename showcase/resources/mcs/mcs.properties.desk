@@ -1,8 +1,8 @@
 mcs.devicerepository.filepath=D:/var/mcs/devices/devices.mdpr
 mcs.policies.filepath=D:/var/mcs/clicktocall-component-showcase/policies
 
-mcs.mgrp.component.scripts.base.url=/clicktocall-component-showcase/comp/
+mcs.mgrp.component.scripts.base.url=/wl-clicktocall-component-showcase/comp/
 mcs.mgrp.component.images.base.url=http://localhost:8080/common-imageserver/
 
 mcs.cache.policies=false
-mcs.script.asset.path=/clicktocall-component-showcase/scripts/
+mcs.script.asset.path=/wl-clicktocall-component-showcase/scripts/
