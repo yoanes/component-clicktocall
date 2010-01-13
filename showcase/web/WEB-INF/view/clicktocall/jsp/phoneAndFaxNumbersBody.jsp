@@ -14,6 +14,9 @@
                     <s:param name="index">
                         <c:out value="${phoneOrFaxLoopStatus.index}"/>
                     </s:param>
+                    <s:param name="ctcpn">
+                        <c:out value="${phoneOrFax.callFormattedNumber}"/>
+                    </s:param>
                 </s:url>
             </jsp:attribute>
         </clicktocall:phoneOrFax>

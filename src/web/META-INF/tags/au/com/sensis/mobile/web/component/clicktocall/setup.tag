@@ -5,6 +5,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="core" uri="/au/com/sensis/mobile/web/component/core/core.tld"%>
 <%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/logging/logging.tld"%>
+<%@ taglib prefix="util" uri="/au/com/sensis/mobile/web/component/util/util.tld"%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />
 <logging:info logger="${logger}" message="Entering setup.tag" />
@@ -21,13 +22,52 @@
 
 <%-- Setup components that we depend on. --%>
 <core:setup />
+<util:setup />
 <logging:setup />
 
 <%-- Scripts for current component. --%>
 <core:script src="${compMcsBasePath}/clicktocall/scripts/clicktocall-component.mscr"></core:script>
 
-<core:script name="clicktocall-init" type="text/javascript">
-    var clickToCallEnabler = new ClickToCallEnabler("<c:out value='${componentName}-ph'/>");    
-</core:script>
+<sel:select>
+    <%-- Check for WTAI support --%>
+    <sel:when expr="exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public.makeCall')) or
+                    exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public'))">
+        <core:script name="clickToCallInitWtai" type="text/javascript">
+            if(typeof(Call) != 'undefined') {
+                var ajaxCall = new Call('wtai://wp/mc;');
+                
+                window.addEvent('load', function() {
+                    var i = 0; var hrefEl;
+                    while(document.getElementById('clicktocall-ph' + i)) {
+                        var phAnchor = document.getElementById('clicktocall-ph' + i);
+                        ajaxCall.initClickToCall(phAnchor);
+                        i++; 
+                    }
+                    return false;
+                });
+            }
+        </core:script>
+    </sel:when>
 
+   <%-- No WTAI support? Let's check for tel: support --%>
+   <sel:when expr="device:getPolicyValue('dial.link.info')='tel:'">
+        
+        <core:script name="clickToCallInitTel" type="text/javascript">
+            if(typeof(Call) != 'undefined') {
+                var ajaxCall = new Call('tel:');
+                
+                window.addEvent('load', function() {
+                    var i = 0; var hrefEl;
+                    while(document.getElementById('clicktocall-ph' + i)) {
+                        var phAnchor = document.getElementById('clicktocall-ph' + i);
+                        ajaxCall.initClickToCall(phAnchor);
+                        i++; 
+                    }
+                    return false;
+                });   
+            }   
+        </core:script>
+   </sel:when>
+   
+</sel:select>
 <logging:info logger="${logger}" message="Exiting setup.tag" />

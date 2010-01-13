@@ -13,6 +13,7 @@
         
         <action name="call" class="callAction">
             <result name="success" type="tiles">clicktocall.component.showcase.calling</result>
+            <result name="ajaxSuccess" type="tiles">clicktocall.component.showcase.ajax.call.reporting</result>
         </action>
 
     </package>

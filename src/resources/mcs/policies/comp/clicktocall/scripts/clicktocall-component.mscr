@@ -1,32 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<variable-policy
-    xmlns="http://www.volantis.com/xmlns/2006/02/marlin-lpdm"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.volantis.com/xmlns/2006/02/marlin-lpdm http://www.volantis.com/schema/2006/02/marlin-lpdm.xsd">
-
+<variable-policy xmlns="http://www.volantis.com/xmlns/2006/02/marlin-lpdm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpdm="http://www.volantis.com/xmlns/2006/02/marlin-rpdm" xmlns:struct="http://www.volantis.com/xmlns/2005/10/ThemeStruct" xsi:schemaLocation="http://www.volantis.com/xmlns/2006/02/marlin-lpdm http://www.volantis.com/schema/2006/02/marlin-lpdm.xsd">
     <type>script</type>
     <variants>
-        <variant>
-            <type>null</type>
-            <selection>
-                <targeted>
-                    <devices>
-                        <device>Master</device>
-                    </devices>
-                </targeted>
-            </selection>
-        </variant>
         <variant>
             <type>script</type>
             <selection>
                 <targeted>
                     <devices>
-                        <device>PC-Win32</device>
-                        <device>Apple</device>
-                        <device>Nokia-N95</device>                        
-                        <device>Nokia-E51-1</device>                        
-                        <device>BlackBerry-9000</device>                        
-                        <device>BlackBerry-9000-4_6</device>                        
+                        <device>Master</device>
                     </devices>
                 </targeted>
             </selection>
@@ -47,6 +28,16 @@
                     <relative>clicktocall/js/clicktocall-component-default.js</relative>
                 </url>
             </content>
+        </variant>
+        <variant>
+            <type>null</type>
+            <selection>
+                <targeted>
+                    <devices>
+                        <device>PC</device>
+                    </devices>
+                </targeted>
+            </selection>
         </variant>
     </variants>
 </variable-policy>
