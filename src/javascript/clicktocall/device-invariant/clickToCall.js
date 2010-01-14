@@ -69,7 +69,13 @@ var Call = new Class({
 			var o = clickToCallSpanId.charAt(clickToCallSpanId.length - 1);
 			
 			// add the click event to fire the ajax request and initiate the call
-			hrefElement.addEvent('click', function() { this.exec(o); sensis.log("Call link clicked ... o==" + o + "; clickToCallSpanId==" + clickToCallSpanId); return true; }.bind(this));
+			hrefElement.addEvent('click', function() { 
+				// Nokia 6120: For some reason, we have to call exec as part of a JavaScript timeout. If we don't, 
+				// the AJAX request called from within exec never fires (seems to be due to some restriction
+				// when hrefs are wtai links). This approach should also work for all other browsers. 
+				this.exec.delay(1, this, o); 
+				return true; 
+			}.bind(this));
 		}
 		else {
 			/* Add false to the array so we don't loose track
@@ -87,12 +93,9 @@ var Call = new Class({
 	   seamless because it should simply take you to the basic clickToCall page.
 	*/
 	exec: function(i) {
-		sensis.log("exec called with i: " + i);
 		if(this.phoneNumbers[i]) {
-			sensis.log("About to call Reporting.to( " + this.urls[i] + ") ...");
 			/* send ajax request and don't care about the response */
 			Reporting.to(this.urls[i]); 
-			sensis.log("Called Reporting.to( " + this.urls[i] + ") ...");
 		}
 		return;
 	}

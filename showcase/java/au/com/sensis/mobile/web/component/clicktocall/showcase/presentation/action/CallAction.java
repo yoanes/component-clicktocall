@@ -33,6 +33,8 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      */
     private String phoneNumber;
 
+    private String xrw;
+
     private PhoneOrFaxFactory phoneOrFaxFactory;
     private HttpServletRequest httpServletRequest;
 
@@ -120,8 +122,22 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      * @return true if the current request is an AJAX request.
      */
     private boolean isAjaxRequest() {
+        return isAjaxRequestHeaderSet() || isAjaxRequestParamSet();
+    }
+
+    /**
+     * @return
+     */
+    private boolean isAjaxRequestHeaderSet() {
         return "XMLHttpRequest".equalsIgnoreCase(getHttpServletRequest()
                 .getHeader("X-Requested-With"));
+    }
+
+    /**
+     * @return
+     */
+    private boolean isAjaxRequestParamSet() {
+        return "xhr".equalsIgnoreCase(getXrw());
     }
 
     /**
@@ -146,6 +162,20 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      */
     public void setCtcpn(final String clickToCallPhoneNumber) {
         setPhoneNumber(clickToCallPhoneNumber);
+    }
+
+    /**
+     * @return the xrw
+     */
+    public String getXrw() {
+        return xrw;
+    }
+
+    /**
+     * @param xrw the xrw to set
+     */
+    public void setXrw(final String xrw) {
+        this.xrw = xrw;
     }
 
 
