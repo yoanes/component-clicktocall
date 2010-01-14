@@ -1,0 +1,7 @@
+==== Version 1.0.1 (tag: clicktocall_v1_0_1) ====
+
+Initial release. Showcase works on the iphone (tel:// protocol) and Nokia 6120 (wtai:// protocol). Features tested:
+* Rendering of phone numbers.
+* Click to call when JavaScript is enabled.
+* Click to call when JavaScript is disabled.
+* AJAX reporting when JavaScript is supported.
