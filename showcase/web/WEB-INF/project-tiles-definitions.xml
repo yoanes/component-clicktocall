@@ -34,9 +34,8 @@
       - In a real app, the result of an AJAX reporting request should still go to a tile in order to hook 
       - into the standard tiles mapped Omniture reporting infrastructure. Note that an html file is used
       - instead of a JSP file so that we bypass the MCSFilter.
-      - TODO: move html file to html dir in webapptestbed.
       -->    
-    <definition name="clicktocall.component.showcase.ajax.call.reporting" template="/WEB-INF/view/common/jsp/empty.html" >
+    <definition name="clicktocall.component.showcase.ajax.call.reporting" extends="testbed.empty">
 
     </definition>
     
