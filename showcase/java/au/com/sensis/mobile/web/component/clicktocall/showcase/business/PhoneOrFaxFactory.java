@@ -12,6 +12,9 @@ import au.com.sensis.mobile.web.component.clicktocall.model.PhoneOrFax;
  */
 public class PhoneOrFaxFactory {
 
+    /**
+     * @return a List of {@link PhoneOrFax} instances.
+     */
     public List<PhoneOrFax> createPhoneOrFaxList() {
         final List<PhoneOrFax> phoneOrFaxList = new ArrayList<PhoneOrFax>();
         phoneOrFaxList.add(createPhone1());
@@ -22,19 +25,19 @@ public class PhoneOrFaxFactory {
     }
 
     private PhoneOrFax createPhone1() {
-        return new PhoneOrFax("(03) 9001 1001", "+6139001001", false);
+        return new PhoneOrFax("(03) 9001 0001", "+61390010001", false);
     }
 
     private PhoneOrFax createPhone2() {
-        return new PhoneOrFax("(03) 9001 1002", "+6139001002", false);
+        return new PhoneOrFax("(03) 9001 0002", "+61390010002", false);
     }
 
     private PhoneOrFax createFax1() {
-        return new PhoneOrFax("(02) 8001 1001", "+6128001001", true);
+        return new PhoneOrFax("(02) 8001 0001", "+61280010001", true);
     }
 
     private PhoneOrFax createFax2() {
-        return new PhoneOrFax("(02) 8001 1001", "+6128001001", true);
+        return new PhoneOrFax("(02) 8001 0002", "+61280010002", true);
     }
 
 }

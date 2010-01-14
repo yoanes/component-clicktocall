@@ -2,7 +2,6 @@ package au.com.sensis.mobile.web.component.clicktocall.showcase.selenium;
 
 import java.io.File;
 
-import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import au.com.sensis.mobile.web.component.clicktocall.showcase.selenium.fixture.HomePage;
@@ -15,8 +14,6 @@ import au.com.sensis.mobile.web.component.clicktocall.showcase.selenium.fixture.
  * @author Adrian.Koh2@sensis.com.au (based on Heather's work in Whereis Mobile)
  */
 public class HomePageIntegrationTestCase extends AbstractSeleniumIntegrationTestCase {
-
-    private static Logger logger = Logger.getLogger(HomePageIntegrationTestCase.class);
 
     /**
      * Opens the map page for an address.
@@ -37,13 +34,15 @@ public class HomePageIntegrationTestCase extends AbstractSeleniumIntegrationTest
                                 + "Configuration/CLDC-1.1 VendorID/122 UP.Link/6.5.1.3.0px");
         openHome();
 
+        // TODO: temporary code to see if the user agent setting worked (see TODO above).
+        final File file = new File("testCallPhoneNumber-homePage.png");
+        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
+
+        // Assert the home page.
         final HomePage homePage =
                 (HomePage) getPageFixtureFactory().createPageFixture(
                         HomePage.class);
 
-        // TODO: temporary code to see if the user agent setting worked (see TODO above).
-        final File file = new File("testCallPhoneNumber-homePage.png");
-        getSelenium().captureEntirePageScreenshot(file.getAbsolutePath(), "background=#FFFFFF");
     }
 
 }

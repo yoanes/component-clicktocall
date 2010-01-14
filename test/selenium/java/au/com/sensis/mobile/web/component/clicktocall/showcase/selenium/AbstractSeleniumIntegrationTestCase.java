@@ -27,13 +27,19 @@ public abstract class AbstractSeleniumIntegrationTestCase
 
     private static Logger logger = Logger.getLogger(AbstractSeleniumIntegrationTestCase.class);
 
+    /**
+     * Writer to use for logger-selenium.
+     */
     protected BufferedWriter loggingWriter;
 
     private static final String RESULT_FILE_ENCODING = "UTF-8";
 
     private static final String SCREENSHOT_PATH = "screenshots";
 
-    private final String RESULTS_BASE_PATH =
+    /**
+     * Base path for storing logging-selenium results.
+     */
+    private static final String RESULTS_BASE_PATH =
             "build" + File.separator + "publish" + File.separator + "logging-selenium";
 
     private final String resultsBasePathAbsolute =
@@ -48,7 +54,7 @@ public abstract class AbstractSeleniumIntegrationTestCase
      */
     @Override
     protected void openHome() {
-        openUrl("/clicktocall-component-showcase/home.action");
+        openUrl("/wl-clicktocall-component-showcase/home.action");
     }
 
     @Override
@@ -66,10 +72,12 @@ public abstract class AbstractSeleniumIntegrationTestCase
     /**
      * @see au.com.sensis.wireless.test.selenium.AbstractSeleniumIntegrationTestCase#createSelenium()
      *
-     * TODO: experimenting with using logging selenium to capture detailed report of each step in the test, including screenshots
-     * when failures occur. Roughly works but see limitations in TODO below, plus the fact that as of 11 Jan 2010, there has been
-     * no update of logging selenium since Jan 2009 (!!!). Still, may be useful to put this in the base
-     * class anyway? Shouldn't hurt performance too much?
+     * TODO: experimenting with using logging selenium to capture detailed
+     * report of each step in the test, including screenshots when failures
+     * occur. Roughly works but see limitations in TODO below, plus the
+     * fact that as of 11 Jan 2010, there has been no update of logging
+     * selenium since Jan 2009 (!!!). Still, may be useful to put this in
+     * the base class anyway? Shouldn't hurt performance too much?
      */
     @Override
     protected Selenium createSelenium() {
@@ -82,10 +90,14 @@ public abstract class AbstractSeleniumIntegrationTestCase
         // + "autorunResult"
         // + LoggingUtils.timeStampForFileName()
         // + ".html";
-        // TODO: need to generate timestamp better. logging-selenium's implementation only does it to the "second"
-        // granularity which can cause a test to overwrite a report of the previous test.
-        // TODO: there is also no way to name the result file after the test being executed unless
-        // every test case is responsible for calling createSelenium instead of the setup method doing it.
+        // TODO: need to generate timestamp better. logging-selenium's
+        // implementation only does it to the "second"
+        // granularity which can cause a test to overwrite a report of the
+        // previous test.
+        // TODO: there is also no way to name the result file after the test
+        // being executed unless
+        // every test case is responsible for calling createSelenium instead of
+        // the setup method doing it.
         final String resultHtmlFileName =
                 resultsBasePathAbsolute + File.separator + "autorunResult"
                         + LoggingUtils.timeStampForFileName() + ".html";

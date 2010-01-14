@@ -11,6 +11,13 @@ public class PhoneOrFax {
     private final String callFormattedNumber;
     private final boolean faxNumber;
 
+    /**
+     * Default constructor.
+     *
+     * @param displayFormattedNumber The display formatted number. eg. (03) 9001 0001
+     * @param callFormattedNumber The number in a callable format. eg. +61390010001.
+     * @param faxNumber True if the number is a fax number. False otherwise.
+     */
     public PhoneOrFax(final String displayFormattedNumber,
             final String callFormattedNumber, final boolean faxNumber) {
         this.displayFormattedNumber = displayFormattedNumber;
