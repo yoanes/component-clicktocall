@@ -1,3 +1,10 @@
+==== Version 1.0.2 (tag: clicktocall_v1_0_2) ====
+
+Now depends on wl-core-component 1.0.11 to obtain updates:
+"Volantis policies configured so that JavaScript will be served up to all devices.
+This is in preparation for someone to test targeted devices against components, the findings
+of which will serve to refine the Volantis policies."
+
 ==== Version 1.0.1 (tag: clicktocall_v1_0_1) ====
 
 Initial release. Showcase works on the iphone (tel:// protocol) and Nokia 6120 (wtai:// protocol). Features tested:
