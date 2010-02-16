@@ -13,8 +13,11 @@
     <bean id="callAction" class="au.com.sensis.mobile.web.component.clicktocall.showcase.presentation.action.CallAction"
             scope="prototype">
         <property name="phoneOrFaxFactory" ref="phoneOrFaxFactory"/>
+        <property name="xmlHttpRequestDetector" ref="core.comp.xmlHttpRequestDetector"/>
     </bean>
     
     <bean id="phoneOrFaxFactory" class="au.com.sensis.mobile.web.component.clicktocall.showcase.business.PhoneOrFaxFactory" />
 
+    
+    
 </beans>

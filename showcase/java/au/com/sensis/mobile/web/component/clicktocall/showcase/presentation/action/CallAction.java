@@ -9,6 +9,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 import au.com.sensis.mobile.web.component.clicktocall.model.PhoneOrFax;
 import au.com.sensis.mobile.web.component.clicktocall.showcase.business.PhoneOrFaxFactory;
+import au.com.sensis.mobile.web.component.core.util.XmlHttpRequestDetector;
 import au.com.sensis.mobile.web.testbed.presentation.common.DumbAction;
 
 /**
@@ -33,10 +34,9 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      */
     private String phoneNumber;
 
-    private String xrw;
-
     private PhoneOrFaxFactory phoneOrFaxFactory;
     private HttpServletRequest httpServletRequest;
+    private XmlHttpRequestDetector xmlHttpRequestDetector;
 
 
     /**
@@ -79,6 +79,8 @@ public class CallAction extends DumbAction implements ServletRequestAware {
 
     /**
      * @see {@link ServletRequestAware#setServletRequest(HttpServletRequest)}
+     * @param httpServletRequest {@link HttpServletRequest} for the current action
+     * instance.
      */
     public void setServletRequest(final HttpServletRequest httpServletRequest) {
         this.httpServletRequest = httpServletRequest;
@@ -108,7 +110,7 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      */
     @Override
     public String execute() {
-        if (isAjaxRequest()) {
+        if (getXmlHttpRequestDetector().isXmlHttpRequest(getHttpServletRequest())) {
             if (logger.isInfoEnabled()) {
                 logger.info("AJAX reporting call - in a real app, reporting would occur here ...");
             }
@@ -116,28 +118,6 @@ public class CallAction extends DumbAction implements ServletRequestAware {
         } else {
             return super.execute();
         }
-    }
-
-    /**
-     * @return true if the current request is an AJAX request.
-     */
-    private boolean isAjaxRequest() {
-        return isAjaxRequestHeaderSet() || isAjaxRequestParamSet();
-    }
-
-    /**
-     * @return
-     */
-    private boolean isAjaxRequestHeaderSet() {
-        return "XMLHttpRequest".equalsIgnoreCase(getHttpServletRequest()
-                .getHeader("X-Requested-With"));
-    }
-
-    /**
-     * @return
-     */
-    private boolean isAjaxRequestParamSet() {
-        return "xhr".equalsIgnoreCase(getXrw());
     }
 
     /**
@@ -165,19 +145,27 @@ public class CallAction extends DumbAction implements ServletRequestAware {
     }
 
     /**
-     * @return the xrw
+     * @return the xmlHttpRequestDetector
      */
-    public String getXrw() {
-        return xrw;
+    private XmlHttpRequestDetector getXmlHttpRequestDetector() {
+        return xmlHttpRequestDetector;
     }
 
     /**
-     * @param xrw the xrw to set
+     * @param xmlHttpRequestDetector the xmlHttpRequestDetector to set
      */
-    public void setXrw(final String xrw) {
-        this.xrw = xrw;
+    public void setXmlHttpRequestDetector(
+            final XmlHttpRequestDetector xmlHttpRequestDetector) {
+        this.xmlHttpRequestDetector = xmlHttpRequestDetector;
     }
 
-
-
+    /**
+     * We only provide this request param setter to avoid Struts warnings. The request
+     * param is actually to be implicitly used by {@link #getXmlHttpRequestDetector()}.
+     *
+     * @param xrw request param set by Struts.
+     */
+    public void setXrw(final String xrw) {
+        // Do nothing.
+    }
 }
