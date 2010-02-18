@@ -1,3 +1,9 @@
+==== Version 1.0.4 (tag: clicktocall_v1_0_4) ====
+
+Now depends on wl-build-scripts 1.0.9 and wl-core-component 1.0.17 which collectively
+fix hotswapping of JavaScript to a showcase that has been deployed using
+the showcase*jar-expanded targets.
+
 ==== Version 1.0.3 (tag: clicktocall_v1_0_3) ====
 
 Now depends on wl-core-component 1.0.16. CallAction now uses the new XmlHttpRequestDetector
