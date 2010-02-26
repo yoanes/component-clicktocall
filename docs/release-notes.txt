@@ -1,3 +1,10 @@
+==== Version 1.1.3-001 (tag: clicktocall_v1_1_3_001) ====
+
+Fixed:
+- CUI-110: Click to call component - phone call image icons are not displaying
+
+  Fixed mimg files and restructured common imageserver dirs.
+
 ==== Version 1.1.3 (tag: clicktocall_v1_1_3) ====
 
 Adjusting version to match iteration 1.1.3 close off.

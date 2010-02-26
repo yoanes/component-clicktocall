@@ -28,7 +28,7 @@
 
 <span class="clickToCallInfo noborder">
 
-    <object src="/comp/clicktocall/images/furniture/calling.mimg" />
+    <object src="/comp/clicktocall/images/calling.mimg" />
 
     <c:choose>
         <c:when test="${device.wtaiSupported}">

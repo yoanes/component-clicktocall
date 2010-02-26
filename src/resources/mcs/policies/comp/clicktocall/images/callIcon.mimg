@@ -29,7 +29,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>images/icons/call_M_16x16.gif</relative>
+                    <relative>clicktocall/call_M_16x16.gif</relative>
                 </url>
             </content>
         </variant>
@@ -59,7 +59,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>images/icons/call_M_16x16.gif</relative>
+                    <relative>clicktocall/call_M_16x16.gif</relative>
                 </url>
             </content>
         </variant>
@@ -89,7 +89,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>images/icons/call_M_16x16.gif</relative>
+                    <relative>clicktocall/call_M_16x16.gif</relative>
                 </url>
             </content>
         </variant>
@@ -119,7 +119,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>images/icons/call_L_22x22.gif</relative>
+                    <relative>clicktocall/call_L_22x22.gif</relative>
                 </url>
             </content>
         </variant>
@@ -149,7 +149,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>images/icons/call_HD800_32x32.gif</relative>
+                    <relative>clicktocall/call_HD800_32x32.gif</relative>
                 </url>
             </content>
         </variant>

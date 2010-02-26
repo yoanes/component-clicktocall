@@ -61,7 +61,7 @@
             <c:choose>
                 <c:when test="${device.clickToCallSupported}">
                     <a href="${clickToCallUrl}">
-                        <object src="/comp/clicktocall/images/furniture/callIcon.mimg" alt="Call" />
+                        <object src="/comp/clicktocall/images/callIcon.mimg" alt="Call" />
                         <span>${phoneOrFax.displayFormattedNumber}</span>
                     </a>
                 </c:when>
