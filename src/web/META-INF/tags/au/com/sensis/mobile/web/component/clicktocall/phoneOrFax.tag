@@ -30,9 +30,9 @@
         type="au.com.sensis.mobile.web.component.clicktocall.model.PhoneOrFax"
         description="Wrapper around the phone or fax number."%>
 <%@ attribute name="faxClass" required="true" 
-    description="CSS class to use for fax number spans."%>
+    description="CSS class to use for fax number divs."%>
 <%@ attribute name="phoneClass" required="true" 
-    description="CSS class to use for phone number spans."%>
+    description="CSS class to use for phone number divs."%>
 <%@ attribute name="clickToCallUrl" required="true" 
     description="URL to invoke when the number is clicked - only used for devices that do not support AJAX."%>
 
@@ -50,29 +50,28 @@
 <c:choose>
 
     <c:when test="${phoneOrFax.faxNumber}">
-        <span class="${faxClass}" id="faxNumber">${phoneOrFax.displayFormattedNumber}</span>
+        <div class="${faxClass}" id="faxNumber">${phoneOrFax.displayFormattedNumber}</div>
     </c:when>
 
     <c:otherwise>
 
         <core:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
-        <span id="${phoneNumberId}" class="${phoneClass}">
+        <div id="${phoneNumberId}" class="${phoneClass}">
 
             <c:choose>
                 <c:when test="${device.clickToCallSupported}">
                     <a href="${clickToCallUrl}">
-                        <object src="/comp/clicktocall/images/callIcon.mimg" alt="Call" />
-                        <span>${phoneOrFax.displayFormattedNumber}</span>
+                        <object src="/comp/clicktocall/images/callIcon.mimg" alt="Call" /> &#8195; ${phoneOrFax.displayFormattedNumber}
                     </a>
                 </c:when>
     
                 <c:otherwise>
-                    <span>${phoneOrFax.displayFormattedNumber}</span>
+                    ${phoneOrFax.displayFormattedNumber}
                 </c:otherwise>
                 
             </c:choose>
 
-        </span>
+        </div>
 
     </c:otherwise>
 
