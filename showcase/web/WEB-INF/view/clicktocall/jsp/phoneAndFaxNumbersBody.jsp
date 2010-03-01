@@ -3,8 +3,8 @@
 <c:forEach items="${phoneOrFaxList}" var="phoneOrFax" varStatus="phoneOrFaxLoopStatus">
     <div class="resultInfo">
         <c:choose>
-            <c:when test="${phoneOrFax.faxNumber}">F: </c:when>
-            <c:otherwise>P: </c:otherwise>
+            <c:when test="${phoneOrFax.faxNumber}">Fax: </c:when>
+            <c:otherwise>Phone: </c:otherwise>
         </c:choose>
         <clicktocall:phoneOrFax device="${context.device}" phoneOrFax="${phoneOrFax}" 
             faxClass="resultInfo" phoneClass="callLink">
