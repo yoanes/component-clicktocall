@@ -21,7 +21,7 @@
         description="Wrapper around the phone number to call."%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />    
-<logging:info logger="${logger}" message="Entering activateClientCall.tag" />
+<logging:debug logger="${logger}" message="Entering callingProgress.tag" />
 
 <%-- Set the default resource bundle for the current tag file. --%>    
 <fmt:setBundle basename="au.com.sensis.mobile.web.component.clicktocall.clicktocall-component" />    
@@ -52,3 +52,5 @@
 
     </c:choose>
 </span>
+
+<logging:debug logger="${logger}" message="Exiting callingProgress.tag" />

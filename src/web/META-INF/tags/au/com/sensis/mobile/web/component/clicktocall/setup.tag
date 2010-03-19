@@ -8,7 +8,7 @@
 <%@ taglib prefix="util" uri="/au/com/sensis/mobile/web/component/util/util.tld"%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />
-<logging:info logger="${logger}" message="Entering setup.tag" />
+<logging:debug logger="${logger}" message="Entering setup.tag" />
 
 <%-- Set the default resource bundle for the current tag file. --%>    
 <fmt:setBundle basename="au.com.sensis.mobile.web.component.clicktocall.clicktocall-component" />    
@@ -70,4 +70,4 @@
    </sel:when>
    
 </sel:select>
-<logging:info logger="${logger}" message="Exiting setup.tag" />
+<logging:debug logger="${logger}" message="Exiting setup.tag" />

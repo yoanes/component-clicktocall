@@ -37,7 +37,7 @@
     description="URL to invoke when the number is clicked - only used for devices that do not support AJAX."%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />    
-<logging:info logger="${logger}" message="Entering phoneOrFax.tag" />
+<logging:debug logger="${logger}" message="Entering phoneOrFax.tag" />
 
 <%-- Set the default resource bundle for the current tag file. --%>    
 <fmt:setBundle basename="au.com.sensis.mobile.web.component.clicktocall.clicktocall-component" />    
@@ -77,4 +77,4 @@
 
 </c:choose>
 
-<logging:info logger="${logger}" message="Exiting phoneOrFax.tag" />
+<logging:debug logger="${logger}" message="Exiting phoneOrFax.tag" />
