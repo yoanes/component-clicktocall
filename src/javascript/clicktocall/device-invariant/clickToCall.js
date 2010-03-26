@@ -7,6 +7,8 @@
 	for clickToCall has the id of "phoneNumber[x]" where x is the counter to make
 	each href element unique. 
 **/
+CLICKTOCALL = {};
+CLICKTOCALL.instances = new Array();
 
 var Call = new Class({
 	/* Collection of urls to send the ajax request to.
@@ -26,9 +28,12 @@ var Call = new Class({
 	*/
 	callMethod: new String(),
 	
+	nth: null,
+	
 	/* initialize all the attributes */
 	initialize: function(cm) {
 		this.callMethod = cm;
+		this.nth = CLICKTOCALL.instances.push(this) - 1;
 	},
 	
 	/* call this method on window.onload. Will populate the arrays of 
