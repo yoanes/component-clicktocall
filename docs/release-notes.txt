@@ -1,3 +1,28 @@
+==== Version 1.1.4-001 (tag: clicktocall_v1_1_4-001) ====
+
+Fixed:
+- CUI-195: ClickToCall: broken in iPhone Client app
+    - phoneOrFax tag now accepts optional allowIphoneAppScraping attribute. If true,
+      the phone number div will be given an id of "phoneNumber". eg. of markup generated 
+      when the flag is true (captured from the showcase - note that bug CUI-120 probably
+      implies that the "tel:%2B" will be "tel:+" later:
+    
+        <div id="phoneNumber">
+            <a href="tel:%2B61570010002" class="b"><img width="22" height="22" 
+                src="http://localhost:8080/common-imageserver/images/component/clicktocall/call_L_22x22.gif" alt=""> (02) 7001 0002</a>
+        </div>
+
+      This seems consistent with the markup produced in current YellowMobile production:
+               
+        <div id="phoneNumber" class="m">
+            <a href="../businessdetail/prepCall.do?bdMap=true&amp;bdRsId=&amp;lId=12813023&amp;suburb=Melbourne&amp;state=VIC&amp;lat=-37.8133895&amp;lon=144.9628322&amp;clickedFrom=bdp&amp;isExternal=false&amp;pn=%2803%29%208600%201600&amp;productId=451067654&amp;backToListingUrl=%2Fbrowse%2FbrowseListings.do%3Fkw%3D%26headingId%3D23051%26headingName%3DDentists%26suburb%3DMelbourne%26state%3DVIC%26lat%3D-37.8133895%26lon%3D144.9628322" class="l">
+            <img width="22" height="22" src="/imageserver/common/images/icons/call_L_22x22.gif" class="k" alt="Call"> (03) 8600 1600</a>
+        </div>
+        
+    - JavaScript in setup tag will additionally look for a div with id of "phoneNumber".
+    - showcase updated with an extra phone number with label of "IPhone client scrapable: "
+      that demonstrates usage of the phoneOrFax tag with allowIphoneAppScraping set to true.
+
 ==== Version 1.1.4 (tag: clicktocall_v1_1_4) ====
 
 Fixed:

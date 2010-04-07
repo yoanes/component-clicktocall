@@ -24,6 +24,14 @@ public class HomeAction extends DumbAction {
 
 
     /**
+     * @return the phoneOrFax
+     */
+    public PhoneOrFax getDefaultPhone() {
+        return getPhoneOrFaxFactory().createDefaultPhone();
+    }
+
+
+    /**
      * @return the phoneOrFaxFactory
      */
     private PhoneOrFaxFactory getPhoneOrFaxFactory() {

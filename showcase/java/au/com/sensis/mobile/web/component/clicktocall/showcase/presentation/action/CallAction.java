@@ -27,7 +27,7 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      */
     public static final String AJAX_SUCCESS_RESULT = "ajaxSuccess";
 
-    private int index;
+    private Integer index;
 
     /**
      * JavaScript relies on this being on the request url.
@@ -45,7 +45,11 @@ public class CallAction extends DumbAction implements ServletRequestAware {
      * @return the {@link PhoneOrFax} corresponding to {@link #getIndex()}.
      */
     public PhoneOrFax getPhoneOrFax() {
-        return getPhoneOrFaxFactory().createPhoneOrFaxList().get(getIndex());
+        if (getIndex() != null) {
+            return getPhoneOrFaxFactory().createPhoneOrFaxList().get(getIndex());
+        } else {
+            return getPhoneOrFaxFactory().createDefaultPhone();
+        }
     }
 
     /**
@@ -66,14 +70,14 @@ public class CallAction extends DumbAction implements ServletRequestAware {
     /**
      * @return the index
      */
-    public int getIndex() {
+    public Integer getIndex() {
         return index;
     }
 
     /**
      * @param index the index to set
      */
-    public void setIndex(final int index) {
+    public void setIndex(final Integer index) {
         this.index = index;
     }
 

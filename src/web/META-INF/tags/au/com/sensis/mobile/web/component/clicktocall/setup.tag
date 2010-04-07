@@ -39,10 +39,22 @@
                 window.addEvent('load', function() {
                     var i = 0; var hrefEl;
                     while(document.getElementById('clicktocall-ph' + i)) {
-                        var phAnchor = document.getElementById('clicktocall-ph' + i);
-                        ajaxCall.initClickToCall(phAnchor);
+                        var phDiv = document.getElementById('clicktocall-ph' + i);
+                        ajaxCall.initClickToCall(phDiv);
                         i++; 
                     }
+                    
+                    /**
+                     * The iphone client looks for phone number divs on business detail
+                     * pages and it _requires_ that the div id be 'phoneNumber'. The
+                     * iphone client does this to enable saving of phone number details
+                     * to the standard iphone contacts list.   
+                     */
+                    var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                    if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                        ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
+                    }
+                    
                     return false;
                 });
             }
@@ -59,10 +71,22 @@
                 window.addEvent('load', function() {
                     var i = 0; var hrefEl;
                     while(document.getElementById('clicktocall-ph' + i)) {
-                        var phAnchor = document.getElementById('clicktocall-ph' + i);
-                        ajaxCall.initClickToCall(phAnchor);
+                        var phDiv = document.getElementById('clicktocall-ph' + i);
+                        ajaxCall.initClickToCall(phDiv);
                         i++; 
                     }
+                    
+                    /**
+                     * The iphone client looks for phone number divs on business detail
+                     * pages and it _requires_ that the div id be 'phoneNumber'. The
+                     * iphone client does this to enable saving of phone number details
+                     * to the standard iphone contacts list.   
+                     */
+                    var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                    if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                        ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
+                    }
+                    
                     return false;
                 });   
             }   

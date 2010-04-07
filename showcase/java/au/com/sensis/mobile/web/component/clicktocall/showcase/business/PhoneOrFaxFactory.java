@@ -40,4 +40,8 @@ public class PhoneOrFaxFactory {
         return new PhoneOrFax("(02) 8001 0002", "+61280010002", true);
     }
 
+    public PhoneOrFax createDefaultPhone() {
+        return new PhoneOrFax("(02) 7001 0002", "+61570010002", false);
+    }
+
 }

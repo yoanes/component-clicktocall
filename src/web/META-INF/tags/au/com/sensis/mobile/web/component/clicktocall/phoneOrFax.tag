@@ -35,6 +35,10 @@
     description="CSS class to use for phone number divs."%>
 <%@ attribute name="clickToCallUrl" required="true" 
     description="URL to invoke when the number is clicked - only used for devices that do not support AJAX."%>
+<%@ attribute name="allowIphoneAppScraping" required="false" 
+    description="Optional flag. If true, will set the phone number div id to 'phoneNumber'. 
+                 Therefore, only do this for at most one phone number on the page. 
+                 This feature is required by the iphone client app."%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />    
 <logging:debug logger="${logger}" message="Entering phoneOrFax.tag" />
@@ -55,7 +59,15 @@
 
     <c:otherwise>
 
-        <core:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
+        <c:choose>
+            <c:when test="${allowIphoneAppScraping}">
+                <c:set var="phoneNumberId" value="phoneNumber" />
+            </c:when>
+            <c:otherwise>
+                <core:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
+            </c:otherwise>
+        </c:choose>
+        
         <div id="${phoneNumberId}" class="${phoneClass}">
 
             <c:choose>

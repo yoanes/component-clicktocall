@@ -23,4 +23,19 @@
     </div>
 </c:forEach>
 
+<div class="resultInfo">
+    IPhone client scrapable: 
+    <clicktocall:phoneOrFax device="${context.device}" phoneOrFax="${defaultPhone}" 
+        faxClass="resultInfo" phoneClass="callLink" allowIphoneAppScraping="true">
+        
+        <jsp:attribute name="clickToCallUrl">                        
+            <s:url namespace="/clicktocall" action="call">
+                <s:param name="ctcpn">
+                    <c:out value="${defaultPhone.callFormattedNumber}"/>
+                </s:param>
+            </s:url>
+        </jsp:attribute>
+    </clicktocall:phoneOrFax>
+</div>
+
  
