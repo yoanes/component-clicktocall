@@ -25,7 +25,7 @@
                             <type>base-url</type>
                         </policy-reference>
                     </base>
-                    <relative>clicktocall/js/clicktocall-component-default.js</relative>
+                    <relative>clicktocall/js/clicktocall-component-default-@project.version.complete@.js</relative>
                 </url>
             </content>
         </variant>

@@ -13,14 +13,17 @@ CLICKTOCALL.instances = new Array();
 var Call = new Class({
 	/* Collection of urls to send the ajax request to.
 	   Will be populated at initClickToCall() with the initial value 
-	   of the href attribute.
+	   of the href attribute. We use an object instead of an array
+	   so that we can index directly by the phone number's div id.
 	*/
-	urls: new Array(),
+	urls: {},
 	
 	/* This vars will hold the information whether the href string value replacement
-	   takes place successfully in the initClikToCall(). Contains true or false.
+	   takes place successfully in the initClickToCall(). Contains true or false.
+	   We use an object instead of an array
+	   so that we can index directly by the phone number's div id.
 	*/
-	phoneNumbers: new Array(),
+	phoneNumbers: {} ,
 	
 	/* wtai or tel or empty string
 	   Will be populated at initialize(). The value is 
@@ -44,7 +47,7 @@ var Call = new Class({
 		
 		var hrefElement = clickToCallSpan.getElements('a')[0];
 		var phoneHref = hrefElement.href;
-		this.urls.push(phoneHref);
+		this.urls[clickToCallSpan.id] = phoneHref;
 		
 		//Get the index of the string "ctcpn=" from the href attribute
 		var phoneIndex = phoneHref.indexOf("ctcpn=");
@@ -56,51 +59,60 @@ var Call = new Class({
 			var endPhoneIndex = phoneHref.indexOf("&", phoneIndex);
 			
 			//Replace code area (0*) with +61 and strip spaces
-			if(endPhoneIndex == -1) 
+			if(endPhoneIndex == -1) {
+				// Ensure that the phone number starts with +61 and also remove spaces.
 				var holdPhoneNumber = phoneHref.substring(phoneIndex).replace(/\(0[0-9]\)/, "+61").replace(/\%20/g, "");
-			
-			else
+				
+				// Ensure that any URI encoding is reversed. In particular, encoding of + as %2B will violate 
+				// the WTAI spec (WAP-188-WAPGenFormats) and tel specs (http://www.ietf.org/rfc/rfc2806.txt).
+				// Also see "2.2. Reserved Characters" at http://www.faqs.org/rfcs/rfc2396.html 
+				holdPhoneNumber = decodeURIComponent(holdPhoneNumber);
+			} else {
+				// Ensure that the phone number starts with +61 and also remove spaces.
 				var holdPhoneNumber = phoneHref.substring(phoneIndex, endPhoneIndex).replace(/\(0[0-9]\)/, "+61").replace(/\%20/g, "");
+				
+				// Ensure that any URI encoding is reversed. In particular, encoding of + as %2B will violate 
+				// the WTAI spec (WAP-188-WAPGenFormats) and tel specs (http://www.ietf.org/rfc/rfc2806.txt).
+				// Also see "2.2. Reserved Characters" at http://www.faqs.org/rfcs/rfc2396.html 
+				holdPhoneNumber = decodeURIComponent(holdPhoneNumber);
+			}
 			
 			//Replace the href attribute in the DOM with a clickToCall protocol
 			hrefElement.href = this.callMethod + holdPhoneNumber;
 			
-			//Add itrue to the array
-			this.phoneNumbers.push(true);
+			//Add true to the remembered phone numbers.
+			this.phoneNumbers[clickToCallSpan.id] = true;
 			
-			//Add the onclick attribute
-			var clickToCallSpanId = clickToCallSpan.id;
-			// TODO: will only support 0-9 ph numbers before wrapping around. regex would be better here?
-			var o = clickToCallSpanId.charAt(clickToCallSpanId.length - 1);
 			
 			// add the click event to fire the ajax request and initiate the call
 			hrefElement.addEvent('click', function() { 
 				// Nokia 6120: For some reason, we have to call exec as part of a JavaScript timeout. If we don't, 
 				// the AJAX request called from within exec never fires (seems to be due to some restriction
 				// when hrefs are wtai links). This approach should also work for all other browsers. 
-				this.exec.delay(1, this, o); 
+				this.exec.delay(1, this, clickToCallSpan.id); 
 				return true; 
 			}.bind(this));
 		}
 		else {
-			/* Add false to the array so we don't loose track
+			/* Add false to the remembered phone numbers so we don't loose track
 			   which phoneNumber gets replaced by the click to call 
 			   protocol successfully
 			*/
-			this.phoneNumbers.push(false);
+			this.phoneNumbers[clickToCallSpan.id] = false;
 		}
 	},
 	
 	/* method to be executed onclick (it will send ajax request for the reporting)
-	   i is the index of the element. It is the same index to retrieve the 
-	   information from the arrays. Will fail if the href attribute replacement 
+	   id is the id of the div that contained the phone number. It is the same id used
+	   to retrieve the information from the phoneNumbers and urls objects. Will fail 
+	   if the href attribute replacement 
 	   doesn't take place in the initClickToCall(). Though the failure will be 
 	   seamless because it should simply take you to the basic clickToCall page.
 	*/
-	exec: function(i) {
-		if(this.phoneNumbers[i]) {
+	exec: function(id) {
+		if(this.phoneNumbers[id]) {
 			/* send ajax request and don't care about the response */
-			Reporting.to(this.urls[i]); 
+			Reporting.to(this.urls[id]); 
 		}
 		return;
 	}

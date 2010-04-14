@@ -1,3 +1,26 @@
+==== Version 1.1.4-002 (tag: clicktocall_v1_1_4-002) ====
+
+Fixed:
+- CUI-120: ClicktoCall Testpage -> Immediate Click To Call is not working as expected on Blackberry bold phone
+    - JavaScript modified to ensure that the "+" character is not URI encoded, since this violates the
+      the WTAI spec (WAP-188-WAPGenFormats) and tel specs (http://www.ietf.org/rfc/rfc2806.txt).
+      Also see "2.2. Reserved Characters" at http://www.faqs.org/rfcs/rfc2396.html 
+- CUI-171: JavaScript Serving - possible caching issue
+    - Now depends on wl-build-scripts 1.0.10 and wl-core-component 1.0.28.
+    - All mscr files include the @project.version.complete@ token
+      in JavaScript file names.
+    - Removed redundant properties from core-environment.properties.sandpit-test.
+- CUI-195: ClickToCall: broken in iPhone Client app
+    - Fixed reporting for the case when allowIphoneAppScraping attribute on the phoneOrFax tag is set to true.
+      clickToCall.js now indexes the urls and phoneNumbers objects (formally arrays) by div id rather than numerical 
+      index.
+      
+Other changes:
+- CallAction now logs the URL and query string params that the action was invoked via.
+
+Upgrade notes:
+- Now depends on wl-build-scripts 1.0.10 and wl-core-component 1.0.27.
+      
 ==== Version 1.1.4-001 (tag: clicktocall_v1_1_4-001) ====
 
 Fixed:
