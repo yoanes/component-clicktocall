@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<core:deviceConfigs xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:core="http://mobile.sensis.com.au/web/component/core/device"
+    xmlns:clicktocall="http://mobile.sensis.com.au/web/component/clicktocall/device"
+    xsi:schemaLocation="http://mobile.sensis.com.au/web/component/clicktocall/device au.com.sensis.mobile.web.component.clicktocall.device.xsd
+        http://mobile.sensis.com.au/web/component/core/device au.com.sensis.mobile.web.component.core.device.xsd">
+        
+    <identifiedDeviceConfig>
+        <deviceId>Apple-iPhone</deviceId>
+        
+        <deviceConfig xsi:type="clicktocall:DeviceConfig">
+            <enableImmediateClickToCall>true</enableImmediateClickToCall>
+        </deviceConfig>
+    </identifiedDeviceConfig>    
+    
+    <identifiedDeviceConfig>
+        <deviceId>Android-OS</deviceId>
+        
+        <deviceConfig xsi:type="clicktocall:DeviceConfig">
+            <enableImmediateClickToCall>true</enableImmediateClickToCall>
+        </deviceConfig>
+    </identifiedDeviceConfig>    
+    
+    <defaultDeviceConfig xsi:type="clicktocall:DeviceConfig">
+        <enableImmediateClickToCall>false</enableImmediateClickToCall>
+    </defaultDeviceConfig>
+</core:deviceConfigs>

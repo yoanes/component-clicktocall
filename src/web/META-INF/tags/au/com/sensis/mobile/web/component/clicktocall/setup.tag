@@ -7,6 +7,11 @@
 <%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/logging/logging.tld"%>
 <%@ taglib prefix="util" uri="/au/com/sensis/mobile/web/component/util/util.tld"%>
 
+<%@ attribute name="device" required="true"
+    type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device"  
+    description="Device of the current user." %>
+
+
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />
 <logging:debug logger="${logger}" message="Entering setup.tag" />
 
@@ -17,81 +22,87 @@
 <c:set var="componentName">
     <fmt:message key="comp.name" />
 </c:set>
+<core:deviceConfig var="deviceConfig" device="${device}" 
+    registryBeanName="${componentName}.comp.deviceConfigRegistry"/>
 
-<core:compMcsBasePath var="compMcsBasePath" />
+<c:if test="${deviceConfig.enableImmediateClickToCall}">
 
-<%-- Setup components that we depend on. --%>
-<core:setup />
-<util:setup />
-<logging:setup />
-
-<%-- Scripts for current component. --%>
-<core:script src="${compMcsBasePath}/clicktocall/scripts/clicktocall-component.mscr"></core:script>
-
-<sel:select>
-    <%-- Check for WTAI support --%>
-    <sel:when expr="exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public.makeCall')) or
-                    exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public'))">
-        <core:script name="clickToCallInitWtai" type="text/javascript">
-            if(typeof(Call) != 'undefined') {
-                var ajaxCall = new Call('wtai://wp/mc;');
-                
-                window.addEvent('load', function() {
-                    var i = 0; var hrefEl;
-                    while(document.getElementById('clicktocall-ph' + i)) {
-                        var phDiv = document.getElementById('clicktocall-ph' + i);
-                        ajaxCall.initClickToCall(phDiv);
-                        i++; 
-                    }
+    <core:compMcsBasePath var="compMcsBasePath" />
+    
+    <%-- Setup components that we depend on. --%>
+    <core:setup />
+    <util:setup />
+    <logging:setup />
+    
+    <%-- Scripts for current component. --%>
+    <core:script src="${compMcsBasePath}/clicktocall/scripts/clicktocall-component.mscr"></core:script>
+    
+    <sel:select>
+        <%-- Check for WTAI support --%>
+        <sel:when expr="exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public.makeCall')) or
+                        exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public'))">
+            <core:script name="clickToCallInitWtai" type="text/javascript">
+                if(typeof(Call) != 'undefined') {
+                    var ajaxCall = new Call('wtai://wp/mc;');
                     
-                    /**
-                     * The iphone client looks for phone number divs on business detail
-                     * pages and it _requires_ that the div id be 'phoneNumber'. The
-                     * iphone client does this to enable saving of phone number details
-                     * to the standard iphone contacts list.   
-                     */
-                    var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
-                    if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
-                        ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
-                    }
+                    window.addEvent('load', function() {
+                        var i = 0; var hrefEl;
+                        while(document.getElementById('clicktocall-ph' + i)) {
+                            var phDiv = document.getElementById('clicktocall-ph' + i);
+                            ajaxCall.initClickToCall(phDiv);
+                            i++; 
+                        }
+                        
+                        /**
+                         * The iphone client looks for phone number divs on business detail
+                         * pages and it _requires_ that the div id be 'phoneNumber'. The
+                         * iphone client does this to enable saving of phone number details
+                         * to the standard iphone contacts list.   
+                         */
+                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                        if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                            ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
+                        }
+                        
+                        return false;
+                    });
+                }
+            </core:script>
+        </sel:when>
+    
+       <%-- No WTAI support? Let's check for tel: support --%>
+       <sel:when expr="device:getPolicyValue('dial.link.info')='tel:'">
+            
+            <core:script name="clickToCallInitTel" type="text/javascript">
+                if(typeof(Call) != 'undefined') {
+                    var ajaxCall = new Call('tel:');
                     
-                    return false;
-                });
-            }
-        </core:script>
-    </sel:when>
+                    window.addEvent('load', function() {
+                        var i = 0; var hrefEl;
+                        while(document.getElementById('clicktocall-ph' + i)) {
+                            var phDiv = document.getElementById('clicktocall-ph' + i);
+                            ajaxCall.initClickToCall(phDiv);
+                            i++; 
+                        }
+                        
+                        /**
+                         * The iphone client looks for phone number divs on business detail
+                         * pages and it _requires_ that the div id be 'phoneNumber'. The
+                         * iphone client does this to enable saving of phone number details
+                         * to the standard iphone contacts list.   
+                         */
+                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                        if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                            ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
+                        }
+                        
+                        return false;
+                    });   
+                }   
+            </core:script>
+       </sel:when>
+       
+    </sel:select>
+</c:if>
 
-   <%-- No WTAI support? Let's check for tel: support --%>
-   <sel:when expr="device:getPolicyValue('dial.link.info')='tel:'">
-        
-        <core:script name="clickToCallInitTel" type="text/javascript">
-            if(typeof(Call) != 'undefined') {
-                var ajaxCall = new Call('tel:');
-                
-                window.addEvent('load', function() {
-                    var i = 0; var hrefEl;
-                    while(document.getElementById('clicktocall-ph' + i)) {
-                        var phDiv = document.getElementById('clicktocall-ph' + i);
-                        ajaxCall.initClickToCall(phDiv);
-                        i++; 
-                    }
-                    
-                    /**
-                     * The iphone client looks for phone number divs on business detail
-                     * pages and it _requires_ that the div id be 'phoneNumber'. The
-                     * iphone client does this to enable saving of phone number details
-                     * to the standard iphone contacts list.   
-                     */
-                    var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
-                    if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
-                        ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
-                    }
-                    
-                    return false;
-                });   
-            }   
-        </core:script>
-   </sel:when>
-   
-</sel:select>
 <logging:debug logger="${logger}" message="Exiting setup.tag" />

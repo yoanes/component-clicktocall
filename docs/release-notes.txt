@@ -1,3 +1,17 @@
+==== Version 1.1.4-003 (tag: clicktocall_v1_1_4-003) ====
+
+Fixed:
+- (partially done) CUI-99: Click to call - Configure mscr files to target desired devices
+    - infrastructure complete:
+        - new ClickToCallDeviceConfigRegistry class.
+        - new device-config.xml config file and supporting XSD. New classes generated from the XSD.
+        - setup.tag now only outputs JavaScript if the current device should support immediate click to call.
+    - TODO: device-config.xml needs to be finalised based on the devices that we wish to target.
+
+Update notes
+- Now depends on wl-core-component 1.0.29.
+- setup tag now requires device attribute to be set. 
+
 ==== Version 1.1.4-002 (tag: clicktocall_v1_1_4-002) ====
 
 Fixed:
