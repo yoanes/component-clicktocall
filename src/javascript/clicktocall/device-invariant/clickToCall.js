@@ -32,6 +32,12 @@ var CallPrototype = new Class({
 	*/
 	callMethod: new String(),
 	
+	/* Records the timestamps of the last time each phone link was clicked, indexed
+	 * by id of the phone number container. We use this to throttle reporting. See
+	 * the addClickEvent function.
+	 */
+	lastClicked: {},
+	
 	nth: null,
 	
 	/* initialize all the attributes */
@@ -85,6 +91,7 @@ var CallPrototype = new Class({
 			this.phoneNumbers[clickToCallSpan.id] = true;
 			
 			this.addClickEvent(hrefElement, clickToCallSpan.id);
+			this.lastClicked[clickToCallSpan.id] = 0;
 		}
 		else {
 			/* Add false to the remembered phone numbers so we don't loose track
@@ -113,7 +120,15 @@ var CallPrototype = new Class({
 	addClickEvent: function(hrefElement, id) {
 		// add the click event to fire the ajax request and initiate the call
 		hrefElement.addEvent('click', function() { 
-			this.exec(id); 
+			var t = $time();
+			// Some devices like the Nokia N85 and N95 can erroneously produce two click events.
+			// Usually happens if you click the middle button on the phone when the phone dialer
+			// comes up. So we only allow the click event to go through if more than 30 seconds
+			// have passed since any previous click.
+			if (t - this.lastClicked[id] > 30000) {
+				this.exec(id);
+				this.lastClicked[id] = t;
+			}
 			return true; 
 		}.bind(this));
 		

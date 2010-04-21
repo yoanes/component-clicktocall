@@ -1,3 +1,8 @@
+==== Version 1.1.4-005 (tag: clicktocall_v1_1_4-005) ====
+
+Fixed:
+- CUI-123: Click to Call Testpage -> 2 reporting events are logged for a single click to call action  on Nokia N95
+
 ==== Version 1.1.4-004 (tag: clicktocall_v1_1_4-004) ====
 
 Fixed:
