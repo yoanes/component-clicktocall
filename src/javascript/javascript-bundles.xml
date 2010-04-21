@@ -4,8 +4,20 @@
     xsi:schemaLocation="http://mobile.sensis.com.au/build-scripts au.com.sensis.mobile.bundles.xsd">
     
     <bundles basename="clicktocall-component" subpackage="clicktocall">
-        <bundle name="default">
+        <bundle name="deviceInvariant" abstract="true">
             <fileset dir="${src.javascript.dir}/clicktocall/device-invariant">
+            </fileset>
+        </bundle>
+        <bundle name="default" parent="deviceInvariant">
+            <fileset dir="${src.javascript.dir}/clicktocall/device-variant/default">
+            </fileset>
+        </bundle>
+        <bundle name="noUserAgent" parent="deviceInvariant">
+            <fileset dir="${src.javascript.dir}/clicktocall/device-variant/noUserAgent">
+            </fileset>
+        </bundle>
+        <bundle name="delayedAjax" parent="deviceInvariant">
+            <fileset dir="${src.javascript.dir}/clicktocall/device-variant/delayedAjax">
             </fileset>
         </bundle>
     </bundles>

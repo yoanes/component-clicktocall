@@ -10,7 +10,8 @@
 CLICKTOCALL = {};
 CLICKTOCALL.instances = new Array();
 
-var Call = new Class({
+
+var CallPrototype = new Class({
 	/* Collection of urls to send the ajax request to.
 	   Will be populated at initClickToCall() with the initial value 
 	   of the href attribute. We use an object instead of an array
@@ -83,15 +84,7 @@ var Call = new Class({
 			//Add true to the remembered phone numbers.
 			this.phoneNumbers[clickToCallSpan.id] = true;
 			
-			
-			// add the click event to fire the ajax request and initiate the call
-			hrefElement.addEvent('click', function() { 
-				// Nokia 6120: For some reason, we have to call exec as part of a JavaScript timeout. If we don't, 
-				// the AJAX request called from within exec never fires (seems to be due to some restriction
-				// when hrefs are wtai links). This approach should also work for all other browsers. 
-				this.exec.delay(1, this, clickToCallSpan.id); 
-				return true; 
-			}.bind(this));
+			this.addClickEvent(hrefElement, clickToCallSpan.id);
 		}
 		else {
 			/* Add false to the remembered phone numbers so we don't loose track
@@ -115,5 +108,14 @@ var Call = new Class({
 			Reporting.to(this.urls[id]); 
 		}
 		return;
+	},
+	
+	addClickEvent: function(hrefElement, id) {
+		// add the click event to fire the ajax request and initiate the call
+		hrefElement.addEvent('click', function() { 
+			this.exec(id); 
+			return true; 
+		}.bind(this));
+		
 	}
 });

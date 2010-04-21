@@ -1,3 +1,9 @@
+==== Version 1.1.4-004 (tag: clicktocall_v1_1_4-004) ====
+
+Fixed:
+- CUI-125: Click to Call Testpage -> "Useragent' is not recognised in the click to call reporting events for 'Samsung A551', 
+  'Samsung C5220 '& 'Samsung F480T'
+
 ==== Version 1.1.4-003 (tag: clicktocall_v1_1_4-003) ====
 
 Fixed:

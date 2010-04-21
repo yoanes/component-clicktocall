@@ -61,22 +61,6 @@
         </deviceConfig>
     </identifiedDeviceConfig>    
     
-    <identifiedDeviceConfig>
-        <deviceId>Samsung-SGH-A551</deviceId>
-        
-        <deviceConfig xsi:type="clicktocall:DeviceConfig">
-            <enableImmediateClickToCall>true</enableImmediateClickToCall>
-        </deviceConfig>
-    </identifiedDeviceConfig>    
-    
-    <identifiedDeviceConfig>
-        <deviceId>Samsung-SGH-F480T</deviceId>
-        
-        <deviceConfig xsi:type="clicktocall:DeviceConfig">
-            <enableImmediateClickToCall>true</enableImmediateClickToCall>
-        </deviceConfig>
-    </identifiedDeviceConfig>    
-    
     <defaultDeviceConfig xsi:type="clicktocall:DeviceConfig">
         <enableImmediateClickToCall>false</enableImmediateClickToCall>
     </defaultDeviceConfig>
