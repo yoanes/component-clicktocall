@@ -1,3 +1,9 @@
+==== Version 1.1.4-006 (tag: clicktocall_v1_1_4-006) ====
+
+Fixed:
+- CUI-212: Classic call confirm page is presented when phone number is selected before the page loads completely.
+    - setup.tag now uses domready event via mootools instead of the load event. 
+    
 ==== Version 1.1.4-005 (tag: clicktocall_v1_1_4-005) ====
 
 Fixed:

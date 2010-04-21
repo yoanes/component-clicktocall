@@ -45,7 +45,7 @@
                 if(typeof(Call) != 'undefined') {
                     var ajaxCall = new Call('wtai://wp/mc;');
                     
-                    window.addEvent('load', function() {
+                    window.addEvent('domready', function() {
                         var i = 0; var hrefEl;
                         while(document.getElementById('clicktocall-ph' + i)) {
                             var phDiv = document.getElementById('clicktocall-ph' + i);
@@ -77,7 +77,7 @@
                 if(typeof(Call) != 'undefined') {
                     var ajaxCall = new Call('tel:');
                     
-                    window.addEvent('load', function() {
+                    window.addEvent('domready', function() {
                         var i = 0; var hrefEl;
                         while(document.getElementById('clicktocall-ph' + i)) {
                             var phDiv = document.getElementById('clicktocall-ph' + i);
