@@ -30,6 +30,14 @@
     </identifiedDeviceConfig>    
     
     <identifiedDeviceConfig>
+        <deviceId>Nokia-6720c</deviceId>
+        
+        <deviceConfig xsi:type="clicktocall:DeviceConfig">
+            <enableImmediateClickToCall>true</enableImmediateClickToCall>
+        </deviceConfig>
+    </identifiedDeviceConfig>    
+    
+    <identifiedDeviceConfig>
         <deviceId>Nokia-E51</deviceId>
         
         <deviceConfig xsi:type="clicktocall:DeviceConfig">
