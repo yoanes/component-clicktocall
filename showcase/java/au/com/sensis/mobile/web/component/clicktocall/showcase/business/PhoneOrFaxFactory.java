@@ -41,7 +41,7 @@ public class PhoneOrFaxFactory {
     }
 
     public PhoneOrFax createDefaultPhone() {
-        return new PhoneOrFax("(02) 7001 0002", "+61570010002", false);
+        return new PhoneOrFax("(02) 7001 0002", "+61270010002", false);
     }
 
 }
