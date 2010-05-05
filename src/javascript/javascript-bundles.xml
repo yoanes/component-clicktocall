@@ -12,10 +12,6 @@
             <fileset dir="${src.javascript.dir}/clicktocall/device-variant/default">
             </fileset>
         </bundle>
-        <bundle name="noUserAgent" parent="deviceInvariant">
-            <fileset dir="${src.javascript.dir}/clicktocall/device-variant/noUserAgent">
-            </fileset>
-        </bundle>
         <bundle name="delayedAjax" parent="deviceInvariant">
             <fileset dir="${src.javascript.dir}/clicktocall/device-variant/delayedAjax">
             </fileset>
