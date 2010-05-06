@@ -1,3 +1,16 @@
+==== Version 1.1.8 (tag: clicktocall_v1_1_8) ====
+
+Now depends on:
+
+    <dependency org="com.sensis" name="wl-core-component" rev="1.0.32" conf="default,test"/>
+    
+Removed the "noUserAgent" specialisation which the new core component handles.     
+
+Upgrade notes:
+- Now depends on:
+
+    <dependency org="com.sensis" name="wl-core-component" rev="1.0.32" conf="default,test"/>
+    
 ==== Version 1.1.7 (tag: clicktocall_v1_1_7) ====
 
 Finalised version for showcase test deployment.
