@@ -60,7 +60,7 @@
                          * to the standard iphone contacts list.   
                          */
                         var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
-                        if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                        if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
                         
@@ -92,7 +92,7 @@
                          * to the standard iphone contacts list.   
                          */
                         var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
-                        if (iphoneClientCompatiblePhoneNumberDiv != 'undefined') {
+                        if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
                         
