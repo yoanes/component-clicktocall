@@ -1,3 +1,18 @@
+==== ********************* PENDING ************************** Version 1.1.10 (tag: clicktocall_v1_1_10) ====
+
+Removed redundant properties from core-environment.properties.* in line with
+wl-core-component upgrade.
+
+Removed clicktocall.tld.jarexpanded in line with wl-build-scripts 1.0.13. 
+
+Added showcase/resources/project-environment.properties.<platform> for each platform. 
+
+Upgraded some libs:
+
+    <dependency org="com.sensis" name="wl-build-scripts" rev="1.0.13" conf="buildBootstrap->default" />
+    <dependency org="com.sensis" name="wl-core-component" rev="1.0.34" conf="default,test"/>
+    <dependency org="com.sensis" name="wl-webapp-testbed" rev="1.0.9" conf="showcase->default"/>        
+
 ==== Version 1.1.9 (tag: clicktocall_v1_1_9) ====
 
 Fixed:
