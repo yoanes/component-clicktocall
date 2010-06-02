@@ -3,7 +3,7 @@
     xmlns:bs="http://mobile.sensis.com.au/build-scripts"
     xsi:schemaLocation="http://mobile.sensis.com.au/build-scripts au.com.sensis.mobile.bundles.xsd">
     
-    <bundles basename="clicktocall-component" subpackage="clicktocall">
+    <bundles basename="clicktocall-component" package="clicktocall">
         <bundle name="deviceInvariant" abstract="true">
             <fileset dir="${src.javascript.dir}/clicktocall/device-invariant">
             </fileset>

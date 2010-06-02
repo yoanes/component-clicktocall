@@ -20,8 +20,8 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="core" uri="/au/com/sensis/mobile/web/component/core/core.tld"%>
-<%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/logging/logging.tld"%>
+<%@ taglib prefix="base" uri="/au/com/sensis/mobile/web/component/core/base/base.tld"%>
+<%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/core/logging/logging.tld"%>
 
 <%@ attribute name="device" required="true" 
     type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device" 
@@ -64,7 +64,7 @@
                 <c:set var="phoneNumberId" value="phoneNumber" />
             </c:when>
             <c:otherwise>
-                <core:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
+                <base:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
             </c:otherwise>
         </c:choose>
         
