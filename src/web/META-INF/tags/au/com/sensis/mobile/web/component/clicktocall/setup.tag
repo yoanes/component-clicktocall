@@ -3,9 +3,9 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="base" uri="/au/com/sensis/mobile/web/component/core/base/base.tld"%>
-<%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/core/logging/logging.tld"%>
-<%@ taglib prefix="util" uri="/au/com/sensis/mobile/web/component/core/util/util.tld"%>
+<%@ taglib prefix="core" uri="/au/com/sensis/mobile/web/component/core/core.tld"%>
+<%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/logging/logging.tld"%>
+<%@ taglib prefix="util" uri="/au/com/sensis/mobile/web/component/util/util.tld"%>
 
 <%@ attribute name="device" required="true"
     type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device"  
@@ -22,26 +22,26 @@
 <c:set var="componentName">
     <fmt:message key="comp.name" />
 </c:set>
-<base:deviceConfig var="deviceConfig" device="${device}" 
+<core:deviceConfig var="deviceConfig" device="${device}" 
     registryBeanName="${componentName}.comp.deviceConfigRegistry"/>
 
 <c:if test="${deviceConfig.enableImmediateClickToCall}">
 
-    <base:compMcsBasePath var="compMcsBasePath" />
+    <core:compMcsBasePath var="compMcsBasePath" />
     
     <%-- Setup components that we depend on. --%>
-    <base:setup />
+    <core:setup />
     <util:setup />
     <logging:setup />
     
     <%-- Scripts for current component. --%>
-    <base:script src="${compMcsBasePath}/clicktocall/scripts/clicktocall-component.mscr"></base:script>
+    <core:script src="${compMcsBasePath}/clicktocall/scripts/clicktocall-component.mscr"></core:script>
     
     <sel:select>
         <%-- Check for WTAI support --%>
         <sel:when expr="exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public.makeCall')) or
                         exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public'))">
-            <base:script name="clickToCallInitWtai" type="text/javascript">
+            <core:script name="clickToCallInitWtai" type="text/javascript">
                 if(typeof(Call) != 'undefined') {
                     var ajaxCall = new Call('wtai://wp/mc;');
                     
@@ -54,12 +54,11 @@
                         }
                         
                         /**
-                         * The iphone client looks for phone number divs on business detail
-                         * pages and it _requires_ that the div id be 'phoneNumber'. The
-                         * iphone client does this to enable saving of phone number details
-                         * to the standard iphone contacts list.   
+                         * This is a White iPhone fix. For the White 1.5 release.
+                         * White Mobile displays the phone numbers inside a span with 
+                         * an id of "phoneNumber" this is different to what happens for yellow. 
                          */
-                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumberWpm');
                         if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
@@ -67,13 +66,13 @@
                         return false;
                     });
                 }
-            </base:script>
+            </core:script>
         </sel:when>
     
        <%-- No WTAI support? Let's check for tel: support --%>
        <sel:when expr="device:getPolicyValue('dial.link.info')='tel:'">
             
-            <base:script name="clickToCallInitTel" type="text/javascript">
+            <core:script name="clickToCallInitTel" type="text/javascript">
                 if(typeof(Call) != 'undefined') {
                     var ajaxCall = new Call('tel:');
                     
@@ -86,12 +85,11 @@
                         }
                         
                         /**
-                         * The iphone client looks for phone number divs on business detail
-                         * pages and it _requires_ that the div id be 'phoneNumber'. The
-                         * iphone client does this to enable saving of phone number details
-                         * to the standard iphone contacts list.   
+                         * This is a White iPhone fix. For the White 1.5 release.
+                         * White Mobile displays the phone numbers inside a span with 
+                         * an id of "phoneNumber" this is different to what happens for yellow. 
                          */
-                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumberWpm');
                         if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
@@ -99,7 +97,7 @@
                         return false;
                     });   
                 }   
-            </base:script>
+            </core:script>
        </sel:when>
        
     </sel:select>
