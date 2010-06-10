@@ -1,4 +1,4 @@
-==== ********************* PENDING ************************** Version 1.1.10 (tag: clicktocall_v1_1_10) ====
+==== Version 1.2.0 (tag: clicktocall_v1_2_0) ====
 
 Removed redundant properties from core-environment.properties.* in line with
 wl-core-component upgrade.
