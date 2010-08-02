@@ -1,3 +1,7 @@
+==== Version 1.2.1 (tag: clicktocall_v1_2_1) ====
+Incorporated fixes from the clicktocall branch that ensure that the WPM client can access the 
+phone number for save to favourites and contacts.
+
 ==== Version 1.2.0 (tag: clicktocall_v1_2_0) ====
 
 Removed redundant properties from core-environment.properties.* in line with

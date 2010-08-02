@@ -10,7 +10,9 @@
 <%@ attribute name="device" required="true"
     type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device"  
     description="Device of the current user." %>
-
+<%@ attribute name="allowIphoneAppScrapingWpm" required="false" 
+    description="Optional flag. If true, will use the phone number span id 'phoneNumberWpm' (white). 
+                 Otherwise it will use 'phoneNumber' (yellow)"%>
 
 <logging:logger var="logger" name="au.com.sensis.mobile.web.component.clicktocall" />
 <logging:debug logger="${logger}" message="Entering setup.tag" />
@@ -59,7 +61,14 @@
                          * iphone client does this to enable saving of phone number details
                          * to the standard iphone contacts list.   
                          */
-                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+				        <c:choose>
+				            <c:when test="${allowIphoneAppScrapingWpm}">
+                                var iphoneClientCompatiblePhoneNumberDiv document.getElementById('phoneNumberWpm');
+				            </c:when>
+				            <c:otherwise>
+				                var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+				            </c:otherwise>
+				        </c:choose>
                         if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
@@ -91,7 +100,14 @@
                          * iphone client does this to enable saving of phone number details
                          * to the standard iphone contacts list.   
                          */
-                        var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                        <c:choose>
+                            <c:when test="${allowIphoneAppScrapingWpm}">
+                                var iphoneClientCompatiblePhoneNumberDiv document.getElementById('phoneNumberWpm');
+                            </c:when>
+                            <c:otherwise>
+                                var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
+                            </c:otherwise>
+                        </c:choose>
                         if ($defined(iphoneClientCompatiblePhoneNumberDiv)) {
                             ajaxCall.initClickToCall(iphoneClientCompatiblePhoneNumberDiv);
                         }
