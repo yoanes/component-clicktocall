@@ -1,21 +1,6 @@
-==== Version 1.2.1 (tag: clicktocall_v1_2_1) ====
-Incorporated fixes from the clicktocall branch that ensure that the WPM client can access the 
-phone number for save to favourites and contacts.
+==== Version 1.1.9-001-ymb (tag: clicktocall_v1_1_9-001-ymb) ====
 
-==== Version 1.2.0 (tag: clicktocall_v1_2_0) ====
-
-Removed redundant properties from core-environment.properties.* in line with
-wl-core-component upgrade.
-
-Removed clicktocall.tld.jarexpanded in line with wl-build-scripts 1.0.13. 
-
-Added showcase/resources/project-environment.properties.<platform> for each platform. 
-
-Upgraded some libs:
-
-    <dependency org="com.sensis" name="wl-build-scripts" rev="1.2.0" conf="buildBootstrap->default" />
-    <dependency org="com.sensis" name="wl-core-component" rev="1.1.1" conf="default,test"/>                
-    <dependency org="com.sensis" name="wl-webapp-testbed" rev="1.0.9" conf="showcase->default"/>        
+- YMB-1939: callIcon.mimg changed to support HD640 and iPhone OS4
 
 ==== Version 1.1.9 (tag: clicktocall_v1_1_9) ====
 
