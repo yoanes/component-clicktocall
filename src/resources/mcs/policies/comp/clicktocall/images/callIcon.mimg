@@ -153,5 +153,65 @@
                 </url>
             </content>
         </variant>
+        <variant>
+            <type>image</type>
+            <selection>
+                <targeted>
+                    <categories>
+                        <category>HD640</category>
+                    </categories>
+                </targeted>
+            </selection>
+            <meta-data>
+                <image>
+                    <encoding>png</encoding>
+                    <height>44</height>
+                    <pixel-depth>8</pixel-depth>
+                    <rendering>color</rendering>
+                    <width>44</width>
+                </image>
+            </meta-data>
+            <content>
+                <url>
+                    <base>
+                        <policy-reference>
+                            <name>/comp/clicktocall/clicktocall-images.mgrp</name>
+                            <type>base-url</type>
+                        </policy-reference>
+                    </base>
+                    <relative>clicktocall/call_HD640_44x44.png</relative>
+                </url>
+            </content>
+        </variant>
+        <variant>
+            <type>image</type>
+            <selection>
+				<targeted>
+					<devices>
+						<device>Apple-iPhone-OS-4.0</device>
+					</devices>
+				</targeted>
+			</selection>
+            <meta-data>
+                <image>
+                    <encoding>png</encoding>
+                    <height>22</height>
+                    <pixel-depth>8</pixel-depth>
+                    <rendering>color</rendering>
+                    <width>22</width>
+                </image>
+            </meta-data>
+            <content>
+                <url>
+                    <base>
+                        <policy-reference>
+                            <name>/comp/clicktocall/clicktocall-images.mgrp</name>
+                            <type>base-url</type>
+                        </policy-reference>
+                    </base>
+                    <relative>clicktocall/call_HD640_44x44.png</relative>
+                </url>
+            </content>
+        </variant>
     </variants>
 </variable-policy>
