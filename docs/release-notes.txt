@@ -1,3 +1,7 @@
+==== Version 1.1.9-002-ymb (tag: clicktocall_v1_1_9-002-ymb) ====
+
+- Version number updated so we can tag it (as a branch already exists for 001)
+
 ==== Version 1.1.9-001-ymb (tag: clicktocall_v1_1_9-001-ymb) ====
 
 - YMB-1939: callIcon.mimg changed to support HD640 and iPhone OS4
