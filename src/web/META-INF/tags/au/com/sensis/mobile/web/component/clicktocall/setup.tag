@@ -63,7 +63,7 @@
                          */
 				        <c:choose>
 				            <c:when test="${allowIphoneAppScrapingWpm}">
-                                var iphoneClientCompatiblePhoneNumberDiv document.getElementById('phoneNumberWpm');
+                                var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumberWpm');
 				            </c:when>
 				            <c:otherwise>
 				                var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
@@ -102,7 +102,7 @@
                          */
                         <c:choose>
                             <c:when test="${allowIphoneAppScrapingWpm}">
-                                var iphoneClientCompatiblePhoneNumberDiv document.getElementById('phoneNumberWpm');
+                                var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumberWpm');
                             </c:when>
                             <c:otherwise>
                                 var iphoneClientCompatiblePhoneNumberDiv = document.getElementById('phoneNumber');
