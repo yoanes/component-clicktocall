@@ -1,3 +1,7 @@
+==== Version 1.2.3 (tag: clicktocall_v1_2_3) ====
+Iphone 4 hi res images
+Enable THUB for click to call
+
 ==== Version 1.2.2 (tag: clicktocall_v1_2_2) ====
 WPM-1153 Bug fix to ensure instant click to call works.
 
