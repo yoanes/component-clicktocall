@@ -69,6 +69,14 @@
         </deviceConfig>
     </identifiedDeviceConfig>    
     
+	<identifiedDeviceConfig>
+        <deviceId>SAGEM-HomeManager</deviceId>
+        
+        <deviceConfig xsi:type="clicktocall:DeviceConfig">
+            <enableImmediateClickToCall>true</enableImmediateClickToCall>
+        </deviceConfig>
+    </identifiedDeviceConfig>  
+    
     <defaultDeviceConfig xsi:type="clicktocall:DeviceConfig">
         <enableImmediateClickToCall>false</enableImmediateClickToCall>
     </defaultDeviceConfig>
