@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<variable-policy xmlns="http://www.volantis.com/xmlns/2006/02/marlin-lpdm" xmlns:rpdm="http://www.volantis.com/xmlns/2006/02/marlin-rpdm" xmlns:struct="http://www.volantis.com/xmlns/2005/10/ThemeStruct" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.volantis.com/xmlns/2006/02/marlin-lpdm http://www.volantis.com/schema/2006/02/marlin-lpdm.xsd">
+<variable-policy xmlns="http://www.volantis.com/xmlns/2006/02/marlin-lpdm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rpdm="http://www.volantis.com/xmlns/2006/02/marlin-rpdm" xmlns:struct="http://www.volantis.com/xmlns/2005/10/ThemeStruct" xsi:schemaLocation="http://www.volantis.com/xmlns/2006/02/marlin-lpdm http://www.volantis.com/schema/2006/02/marlin-lpdm.xsd">
     <type>image</type>
     <categorization-scheme>custom.imageCategory</categorization-scheme>
     <variants>
@@ -8,67 +8,9 @@
             <selection>
                 <targeted>
                     <categories>
-                        <category>XS</category>
-                    </categories>
-                </targeted>
-            </selection>
-            <meta-data>
-                <image>
-                    <encoding>gif</encoding>
-                    <height>16</height>
-                    <pixel-depth>8</pixel-depth>
-                    <rendering>color</rendering>
-                    <width>70</width>
-                </image>
-            </meta-data>
-            <content>
-                <url>
-                    <base>
-                        <policy-reference>
-                            <name>/comp/clicktocall/clicktocall-images.mgrp</name>
-                            <type>base-url</type>
-                        </policy-reference>
-                    </base>
-                    <relative>clicktocall/calling_XS_70x16.gif</relative>
-                </url>
-            </content>
-        </variant>
-        <variant>
-            <type>image</type>
-            <selection>
-                <targeted>
-                    <categories>
-                        <category>S</category>
-                    </categories>
-                </targeted>
-            </selection>
-            <meta-data>
-                <image>
-                    <encoding>gif</encoding>
-                    <height>16</height>
-                    <pixel-depth>8</pixel-depth>
-                    <rendering>color</rendering>
-                    <width>70</width>
-                </image>
-            </meta-data>
-            <content>
-                <url>
-                    <base>
-                        <policy-reference>
-                            <name>/comp/clicktocall/clicktocall-images.mgrp</name>
-                            <type>base-url</type>
-                        </policy-reference>
-                    </base>
-                    <relative>clicktocall/calling_S_70x16.gif</relative>
-                </url>
-            </content>
-        </variant>
-        <variant>
-            <type>image</type>
-            <selection>
-                <targeted>
-                    <categories>
                         <category>M</category>
+                        <category>S</category>
+                        <category>XS</category>
                     </categories>
                 </targeted>
             </selection>
@@ -98,6 +40,7 @@
             <selection>
                 <targeted>
                     <categories>
+                        <category>HD480</category>
                         <category>L</category>
                     </categories>
                 </targeted>
@@ -128,6 +71,8 @@
             <selection>
                 <targeted>
                     <categories>
+                        <category>HD1024</category>
+                        <category>HD640</category>
                         <category>HD800</category>
                     </categories>
                 </targeted>
@@ -150,6 +95,36 @@
                         </policy-reference>
                     </base>
                     <relative>clicktocall/calling_HD800_99x34.gif</relative>
+                </url>
+            </content>
+        </variant>
+        <variant>
+            <type>image</type>
+            <selection>
+                <targeted>
+                    <devices>
+                        <device>Apple-iPhone-OS-4.0</device>
+                    </devices>
+                </targeted>
+            </selection>
+            <meta-data>
+                <image>
+                    <encoding>gif</encoding>
+                    <height>24</height>
+                    <pixel-depth>8</pixel-depth>
+                    <rendering>color</rendering>
+                    <width>70</width>
+                </image>
+            </meta-data>
+            <content>
+                <url>
+                    <base>
+                        <policy-reference>
+                            <name>/comp/clicktocall/clicktocall-images.mgrp</name>
+                            <type>base-url</type>
+                        </policy-reference>
+                    </base>
+                    <relative>clicktocall/calling_HD640_140x48.gif</relative>
                 </url>
             </content>
         </variant>
