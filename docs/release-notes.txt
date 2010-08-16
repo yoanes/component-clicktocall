@@ -1,3 +1,6 @@
+==== Version 1.2.4 (tag: clicktocall_v1_2_4) ====
+Roll back THUB until further update from SAGEM
+
 ==== Version 1.2.3 (tag: clicktocall_v1_2_3) ====
 Iphone 4 hi res images
 Enable THUB for click to call
