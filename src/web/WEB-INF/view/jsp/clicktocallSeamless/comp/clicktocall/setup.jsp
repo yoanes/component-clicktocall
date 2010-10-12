@@ -25,11 +25,6 @@
 <crf:deviceProperty var="deviceDialLinkInfo" device="${device}" property="dial.link.info"/>    
 <c:choose>
     <%-- Check for WTAI support --%>
-    <%-- TODO: verify that my quick conversion of Volantis sel to JSTL is correct. --%>        
-    <%--
-            <sel:when expr="exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public.makeCall')) or
-                    exists(index-of(device:getPolicyValue('UAProf.WtaiLibraries'),'WTA.Public'))">
-    --%>
     <c:when test="${fn:contains(deviceWtaiLibraries, 'WTA.Public.makeCall') or fn:contains(deviceWtaiLibraries, 'WTA.Public')}">
         <crf:script name="clickToCallInitWtai" type="text/javascript" device="${device}">
             if(typeof(Call) != 'undefined') {
@@ -68,10 +63,6 @@
     </c:when>
     
    <%-- No WTAI support? Let's check for tel: support --%>
-   <%-- TODO: verify that my quick conversion of Volantis sel to JSTL is correct. --%>
-   <%--
-   <sel:when expr="device:getPolicyValue('dial.link.info')='tel:'">
-   --%>
     <c:when test="${deviceDialLinkInfo eq 'tel:'}">
         
         <crf:script name="clickToCallInitTel" type="text/javascript" device="${device}">
