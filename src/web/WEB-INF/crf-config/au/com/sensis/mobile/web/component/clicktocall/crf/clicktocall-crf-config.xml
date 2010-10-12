@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<crf:ui-configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:crf="http://mobile.sensis.com.au/web/crf/config"
+         xsi:schemaLocation="http://mobile.sensis.com.au/web/crf/config crf-config.xsd">
+
+    <config-path>comp/clicktocall</config-path>
+    <groups>
+        <group name="delayedAjax" expr="device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
+            or device.isA('Nokia-N85') or device.isA('Nokia-N95')" />
+        <group name="clicktocallSeamless" expr="device.isA('Apple-iPhone') or device.isA('Android-OS') 
+            or device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
+            or device.isA('Nokia-N85') or device.isA('Nokia-N95') or device.isA('Samsung-GT-C5220') 
+            or device.isA('SAGEM-HomeManager')" />
+        <default-group name="default" />
+    </groups>
+    
+</crf:ui-configuration>

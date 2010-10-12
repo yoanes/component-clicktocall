@@ -91,7 +91,7 @@ public class CallAction extends DumbAction implements ServletRequestAware {
 
         if (logger.isInfoEnabled()) {
             logger.info("CallAction invoked for request: "
-                    + httpServletRequest.getRequestURL() + httpServletRequest.getQueryString());
+                    + httpServletRequest.getRequestURL() + "?" + httpServletRequest.getQueryString());
         }
 
         if (logger.isDebugEnabled()) {
