@@ -19,7 +19,7 @@
 <logging:setup device="${device}" />
 
 <%-- Scripts for current component. --%>
-<crf:script src="comp/clicktocall/package" device="${device}"></crf:script>
+<crf:script src="comp/clicktocall/package" type="text/javascript" device="${device}"></crf:script>
 
 <crf:deviceProperty var="deviceWtaiLibraries" device="${device}" property="UAProf.WtaiLibraries"/>
 <crf:deviceProperty var="deviceDialLinkInfo" device="${device}" property="dial.link.info"/>    
