@@ -49,7 +49,6 @@
         <artifact name="wl-clicktocall-component" type="jar" ext="jar" conf="default"/>
         <artifact name="wl-clicktocall-component" type="zip" ext="zip" conf="default"/>
         <artifact name="wl-clicktocall-component-test" type="jar" ext="jar" conf="test"/>
-        <artifact name="wl-clicktocall-component-device-config-xsd" type="xsd" ext="zip" conf="default"/>                
     </publications>
 
     <dependencies>
