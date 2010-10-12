@@ -1,3 +1,12 @@
+==== Version 2.0.0-001 (tag: clicktocall_v2_0_0-001) ====
+
+Jiras:
+- CUI-289: Clicktocall - Content Rendering Framework migration - Java
+    - ready for UI migration. JS migration already performed but not tested on handsets. 
+      An important aspect of the tag file migration is that setup.tag 
+      includes /WEB-INF/view/jsp/comp/clicktocall/setup.crf so that setup.crf is resolved 
+      through the contentRenderingFramework.
+
 ==== Version 1.2.6 (tag: clicktocall_v1_2_6) ====
 Enable THUB back again
 
