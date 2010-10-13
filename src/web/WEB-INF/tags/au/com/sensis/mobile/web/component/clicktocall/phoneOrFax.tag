@@ -80,7 +80,7 @@
             <c:choose>
                 <c:when test="${device.clickToCallSupported}">
                     <a href="${clickToCallUrl}" class="clickToCallLink">
-                        <object src="/comp/clicktocall/images/callIcon.mimg" alt="Call" class="clickToCallImage"/> &#8195;
+                        <crf:img device="${context.device}" src="/comp/clicktocall/callIcon.image" alt="Call" class="clickToCallImage" /> &#8195;
 						<c:choose>
 							<c:when test="${allowIphoneAppScrapingWpm}">
 								<span id="phoneNumber">${phoneOrFax.displayFormattedNumber}</span>

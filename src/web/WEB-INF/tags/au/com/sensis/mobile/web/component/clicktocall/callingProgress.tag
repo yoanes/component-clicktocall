@@ -28,8 +28,7 @@
 
 <span class="clickToCallInfo noborder">
 
-    <object src="/comp/clicktocall/images/calling.mimg" />
-
+    <crf:img device="${context.device}" src="comp/clicktocall/calling.image" />
     <c:choose>
         <c:when test="${device.wtaiSupported}">
             <a href="<fmt:message key='comp.wtai.prefix'
