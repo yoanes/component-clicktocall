@@ -12,6 +12,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/core/logging/logging.tld"%>
+<%@ taglib prefix="crf" uri="/au/com/sensis/mobile/crf/crf.tld"%>
 
 <%@ attribute name="device" required="true" 
     type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device" 
