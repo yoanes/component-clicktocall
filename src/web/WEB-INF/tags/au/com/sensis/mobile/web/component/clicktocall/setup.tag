@@ -25,6 +25,7 @@
   --%>
 <c:set var="clicktocallComponentDevice" scope="request" value="${device}" />
 <c:set var="clicktocallComponentAllowIphoneAppScrapingWpm" scope="request" value="${allowIphoneAppScrapingWpm}" />
+<crf:link rel="stylesheet" href="comp/clicktocall/iphone4.css" type="text/css" device="${device}"/>
 <jsp:include page="/WEB-INF/view/jsp/comp/clicktocall/setup.crf" />
 
 <logging:debug logger="${logger}" message="Exiting setup.tag" />
