@@ -1,0 +1,8 @@
+.callLink a {
+	text-decoration: none;
+}
+
+a > img {
+	vertical-align: text-bottom;
+	border:0px none;
+}
