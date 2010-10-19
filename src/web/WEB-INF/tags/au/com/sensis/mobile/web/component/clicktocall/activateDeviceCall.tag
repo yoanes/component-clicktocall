@@ -40,12 +40,12 @@
 <c:if test="${device.metaRefreshSupported}">
     <c:choose>
         <c:when test="${device.wtaiSupported}">
-            <meta property="mcs:refresh"
-                    content="1;<fmt:message key='comp.wtai.prefix'/><c:out value='${phoneOrFax.callFormattedNumber}'/>"/>
+            <meta http-equiv="refresh"
+                    content="1;URL=<fmt:message key='comp.wtai.prefix'/><c:out value='${phoneOrFax.callFormattedNumber}'/>"/>
         </c:when>
         <c:when test="${device.telSupported}">
-            <meta property="mcs:refresh"
-                    content="1;<fmt:message key='comp.tel.prefix'/><c:out value='${phoneOrFax.callFormattedNumber}'/>"/>
+            <meta http-equiv="refresh"
+                    content="1;URL=<fmt:message key='comp.tel.prefix'/><c:out value='${phoneOrFax.callFormattedNumber}'/>"/>
         </c:when>
         <c:otherwise>
             <%-- Do nothing. We don't know how to automatically initiate a call for the device. --%>
