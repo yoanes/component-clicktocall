@@ -1,8 +1,5 @@
 mcs.devicerepository.filepath=/app/smtestapp/sandpit-uidev/wl-webapp-testbed/devices/devices.mdpr
 mcs.policies.filepath=/app/smtestapp/sandpit-uidev/clicktocall-component/
 
-mcs.mgrp.component.scripts.base.url=/uidev/clicktocall-component-showcase/comp/
-mcs.mgrp.component.images.base.url=/uidev/clicktocall-component-imageserver/images/component/
-
 mcs.cache.policies=false
 #mcs.script.asset.path=/clicktocall-component-showcase/scripts/
