@@ -1,3 +1,10 @@
+==== Version 2.0.2.1 (tag: clicktocall_v2_0_2_1) ====
+
+Jiras:
+* CUI-325: Maps for Intermediate devices-  Controls on the map lock 
+    * Updated click to call component to use <dependency org="com.sensis" name="wl-core-component" rev="2.0.5" conf="default,test"/>
+      as well to make sure that the change made for map will not break the click to call component.
+
 ==== Version 2.0.2 (tag: clicktocall_v2_0_2) ====
 
 Now depends on:
