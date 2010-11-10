@@ -1,4 +1,4 @@
-<%@ tag body-content="empty" isELIgnored="false" 
+<%@ tag body-content="empty" isELIgnored="false" trimDirectiveWhitespaces="true"  
     description="Render a phone or fax number. Does not display call charges info.."%>
     
 <%--
@@ -19,6 +19,7 @@
   --%>        
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="base" uri="/au/com/sensis/mobile/web/component/core/base/base.tld"%>
 <%@ taglib prefix="logging" uri="/au/com/sensis/mobile/web/component/core/logging/logging.tld"%>
@@ -76,30 +77,24 @@
             </c:otherwise>
         </c:choose>
         
-        <div id="${phoneNumberId}" class="${phoneClass}">
-
-            <c:choose>
+        <div id="${phoneNumberId}" class="${phoneClass}"
+            ><c:choose>
                 <c:when test="${device.clickToCallSupported}">
-                    <a href="${clickToCallUrl}" class="clickToCallLink">
-                        <crf:img device="${context.device}" src="comp/clicktocall/callIcon.image" alt="Call" class="callIcon" />
-						<c:choose>
-							<c:when test="${allowIphoneAppScrapingWpm}">
-								<span id="phoneNumber">${phoneOrFax.displayFormattedNumber}</span>
-							</c:when>
-							<c:otherwise>
-								${phoneOrFax.displayFormattedNumber}
-							</c:otherwise>
-						</c:choose>                         
-                    </a>
-                </c:when>
+                    <a href="${fn:trim(clickToCallUrl)}" class="clickToCallLink"
+                        ><crf:img device="${context.device}" src="comp/clicktocall/callIcon.image" alt="Call" class="callIcon" 
+                        /><c:choose
+                            ><c:when test="${allowIphoneAppScrapingWpm}"
+                                ><span id="phoneNumber">${phoneOrFax.displayFormattedNumber}</span
+                            ></c:when>
+							<c:otherwise>${phoneOrFax.displayFormattedNumber}</c:otherwise>
+						</c:choose
+                    ></a
+                ></c:when>
     
-                <c:otherwise>
-                    ${phoneOrFax.displayFormattedNumber}
-                </c:otherwise>
+                <c:otherwise>${phoneOrFax.displayFormattedNumber}</c:otherwise>
                 
-            </c:choose>
-
-        </div>
+            </c:choose
+        ></div>
 
     </c:otherwise>
 

@@ -1,3 +1,10 @@
+==== Version 2.0.2.2 (tag: clicktocall_v2_0_2_2) ====
+
+Jiras:
+* CUI-326 Clicktocall - No reporting event observed in logs
+    * phoneOrFax.tag now ensures that whitespaces are stripped from markup. In particular,
+      the URL passed into the tag is trimmed. 
+
 ==== Version 2.0.2.1 (tag: clicktocall_v2_0_2_1) ====
 
 Jiras:
