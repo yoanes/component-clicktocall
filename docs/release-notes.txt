@@ -1,3 +1,6 @@
+==== Version 2.0.2.5 (tag: clicktocall_v2_0_2_5) ====
+* HD800 callIcon updated with transparent background
+
 ==== Version 2.0.2.4 (tag: clicktocall_v2_0_2_4) ====
 * Update component with new icons
 * Merge the HD1024 with HD800, and HD480 with L
