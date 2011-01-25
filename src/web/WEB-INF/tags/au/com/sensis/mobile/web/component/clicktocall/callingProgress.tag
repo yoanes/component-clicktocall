@@ -1,4 +1,4 @@
-<%@ tag body-content="empty" isELIgnored="false" 
+<%@ tag body-content="empty" isELIgnored="false" trimDirectiveWhitespaces="true" 
     description="Display a calling progress indicstor, plus a try again link."%>
     
 <%--

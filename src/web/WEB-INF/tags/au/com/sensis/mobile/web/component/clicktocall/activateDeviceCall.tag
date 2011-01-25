@@ -1,4 +1,4 @@
-<%@ tag body-content="empty" isELIgnored="false" 
+<%@ tag body-content="empty" isELIgnored="false" trimDirectiveWhitespaces="true" 
     description="Activate a phone call from the device. Must be called in the HTML head."%>
     
 <%--

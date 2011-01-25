@@ -1,4 +1,4 @@
-<%@ tag body-content="empty" isELIgnored="false" 
+<%@ tag body-content="empty" isELIgnored="false" trimDirectiveWhitespaces="true" 
     description="Setup this component. Must be called in the HTML head."%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
