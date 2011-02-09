@@ -6,14 +6,6 @@
 
     <config-path>comp/clicktocall</config-path>
     <groups>
-    	<!-- Image category groups. -->
-        <group name="HD800" expr="device.imageCategory eq 'HD800' or device.imageCategory eq 'HD1024'" />
-        <group name="HD640" expr="device.imageCategory eq 'HD640'" />
-        <group name="L" expr="device.imageCategory eq 'L' or device.imageCategory eq 'HD480'" />
-        <group name="M" expr="device.imageCategory eq 'M'" />
-        <group name="S" expr="device.imageCategory eq 'S'" />
-        <group name="XS" expr="device.imageCategory eq 'XS'" />
-    
     	<group name="iphone4" expr="device.isA('Apple') and device.getUserAgent() =~ '.*OS 4_.*'" />
     	
         <group name="delayedAjax" expr="device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
@@ -22,6 +14,15 @@
             or device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
             or device.isA('Nokia-N85') or device.isA('Nokia-N95') or device.isA('Samsung-GT-C5220') 
             or device.isA('SAGEM-HomeManager')" />
+            
+        <!-- Image category groups. -->
+        <group name="HD800" expr="device.imageCategory eq 'HD800' or device.imageCategory eq 'HD1024'" />
+        <group name="HD640" expr="device.imageCategory eq 'HD640'" />
+        <group name="L" expr="device.imageCategory eq 'L' or device.imageCategory eq 'HD480'" />
+        <group name="M" expr="device.imageCategory eq 'M'" />
+        <group name="S" expr="device.imageCategory eq 'S'" />
+        <group name="XS" expr="device.imageCategory eq 'XS'" />
+        
         <default-group name="default" />
     </groups>
     
