@@ -13,9 +13,7 @@
         <property name="locations">
             <list>
                 <value>classpath:/au/com/sensis/mobile/web/component/clicktocall/clicktocall-component.properties</value>
-                
-                <!-- Load a platform dependent environment properties file. -->
-                <value>classpath:/au/com/sensis/mobile/web/component/clicktocall/clicktocall-environment.properties.@{global.platform}</value>
+                <value>classpath:/clicktocall-environment.properties</value>
             </list>
         </property>
     </bean>                
@@ -31,7 +29,6 @@
         <property name="locations">
             <list>
                 <value>classpath:/clicktocall-component.properties</value>
-                <value>classpath:/clicktocall-environment.properties</value>
             </list>
         </property>
         
