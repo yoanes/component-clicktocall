@@ -12,6 +12,7 @@
 <%@ attribute name="device" required="true"
     type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device"  
     description="Device of the current user." %>
+<%-- allowIphoneAppScrapingWpm is deprecated but still allowed so as not to break old code.--%>    
 <%@ attribute name="allowIphoneAppScrapingWpm" required="false" 
     description="Optional flag. If true, will use the phone number span id 'phoneNumberWpm' (white). 
                  Otherwise it will use 'phoneNumber' (yellow)"%>
@@ -24,7 +25,6 @@
   - ContentRenderingFramework.
   --%>
 <c:set var="clicktocallComponentDevice" scope="request" value="${device}" />
-<c:set var="clicktocallComponentAllowIphoneAppScrapingWpm" scope="request" value="${allowIphoneAppScrapingWpm}" />
 <crf:link rel="stylesheet" href="comp/clicktocall/iphone4.css" type="text/css" device="${device}"/>
 <jsp:include page="/WEB-INF/view/jsp/comp/clicktocall/setup.crf" />
 

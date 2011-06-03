@@ -96,6 +96,40 @@
             </c:choose
         ></div>
 
+		<crf:deviceProperty var="deviceWtaiLibraries" device="${device}" property="UAProf.WtaiLibraries"/>
+		<crf:deviceProperty var="deviceDialLinkInfo" device="${device}" property="dial.link.info"/>    
+		<c:choose>
+		    <%-- Check for WTAI support --%>
+		    <c:when test="${fn:contains(deviceWtaiLibraries, 'WTA.Public.makeCall') or fn:contains(deviceWtaiLibraries, 'WTA.Public')}">
+		        <crf:script name="${phoneNumberId}-clickToCallInitWtai" type="text/javascript" device="${device}">
+                    (function() {
+			            if(typeof(Call) != 'undefined') {
+			                var ajaxCall = new Call('wtai://wp/mc;');
+			                var phoneNumberId = '<c:out value="${phoneNumberId}"/>'; 
+			                var phoneNumberEl = $(phoneNumberId);
+	                        ajaxCall.initClickToCall(phoneNumberEl);
+			            }
+			        })();
+		        </crf:script>
+		    </c:when>
+		    
+		   <%-- No WTAI support? Let's check for tel: support --%>
+		    <c:when test="${deviceDialLinkInfo eq 'tel:'}">
+		        
+		        <crf:script name="${phoneNumberId}-clickToCallInitTel" type="text/javascript" device="${device}">
+		            (function() {
+		                if(typeof(Call) != 'undefined') {
+		                    var ajaxCall = new Call('tel:');
+                            var phoneNumberId = '<c:out value="${phoneNumberId}"/>'; 
+                            var phoneNumberEl = $(phoneNumberId);
+                            ajaxCall.initClickToCall(phoneNumberEl);
+                        }
+		            })();   
+		        </crf:script>
+		   </c:when>
+		   
+		</c:choose>
+
     </c:otherwise>
 
 </c:choose>
