@@ -1,3 +1,25 @@
+==== Version 2.0.2.7.2 (tag: clicktocall_v2_0_2_7_2, branch: branch_clicktocall_v2_0_2_7) ====
+
+Fixes so that the click to call component can be used in HTML snippets returned from AJAX responses.
+Note that the AJAX HTML snippets will contain <script></script> nodes. You need to use a JavaScript framework that is
+capable of parsing these. In the case of Mootools, if you use the Request.HTML object to issue the AJAX request, setting
+the "append" or "update" options will ensure that Mootools handles the scripts in the response correctly.
+
+Upgrade notes:
+* API breaking changes to clicktocall:phoneOrFax JSP tag:
+    * allowIphoneAppScraping optional attribute has been removed. 
+    * now requires wrapperId attribute: 
+        * Since this is an HTML id, you need to ensure that it is unique on your page. If your page is gradually built up
+          via multiple AJAX requests, you might consider the Java UUID class for generating universally unique ids.  
+        * If you used to pass in allowIphoneAppScraping (which is now illegal) as true, then you should set wrapperId to "phoneNumber" 
+          for compatibility with your iphone client app which historically performed screen scraping.
+        * If you set allowIphoneAppScrapingWpm to true, then you should set wrapperId to "phoneNumberWpm" 
+          for compatibility with your iphone client app which historically performed screen scraping. The tag will also
+          wrap the phoneNumber in a span and set the id to 'phoneNumber'.
+    * Fax numbers were incorrectly given a fixed, hard coded id of 'faxNumber'. This has been fixed to use the value of the passed in 
+      wrapperId attribute.
+    * Fixed phoneOrFax.tag from the previous version so that it doesn't output JavaScript for devices not targeted to receive seamless click to call.
+
 ==== Version 2.0.2.7.1 (tag: clicktocall_v2_0_2_7_1, branch: branch_clicktocall_v2_0_2_7) ====
 
 Adding of JavaScript event handler to phone number links is now performed in the phoneOrFax.tag instead of in the setup tag.

@@ -50,11 +50,15 @@ var CallPrototype = new Class({
 	   urls and phoneNumbers based on the elements in the page with
 	   phonenumber in it. Also does the href replacement.
 	*/
-	initClickToCall: function(clickToCallSpan) {
+	initClickToCall: function(clickToCallWrapperId) {
+        var clickToCallContainer = $(clickToCallWrapperId);
+		if (clickToCallContainer == undefined) {
+			return;
+		}
 		
-		var hrefElement = clickToCallSpan.getElements('a')[0];
+		var hrefElement = clickToCallContainer.getElements('a')[0];
 		var phoneHref = hrefElement.href;
-		this.urls[clickToCallSpan.id] = phoneHref;
+		this.urls[clickToCallContainer.id] = phoneHref;
 		
 		//Get the index of the string "ctcpn=" from the href attribute
 		var phoneIndex = phoneHref.indexOf("ctcpn=");
@@ -88,17 +92,17 @@ var CallPrototype = new Class({
 			hrefElement.href = this.callMethod + holdPhoneNumber;
 			
 			//Add true to the remembered phone numbers.
-			this.phoneNumbers[clickToCallSpan.id] = true;
+			this.phoneNumbers[clickToCallContainer.id] = true;
 			
-			this.addClickEvent(hrefElement, clickToCallSpan.id);
-			this.lastClicked[clickToCallSpan.id] = 0;
+			this.addClickEvent(hrefElement, clickToCallContainer.id);
+			this.lastClicked[clickToCallContainer.id] = 0;
 		}
 		else {
 			/* Add false to the remembered phone numbers so we don't loose track
 			   which phoneNumber gets replaced by the click to call 
 			   protocol successfully
 			*/
-			this.phoneNumbers[clickToCallSpan.id] = false;
+			this.phoneNumbers[clickToCallContainer.id] = false;
 		}
 	},
 	
