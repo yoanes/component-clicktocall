@@ -1,0 +1,10 @@
+dsk:
+  base_url: http://localhost:8080/
+  log_files:
+    - server: localhost
+      log_file_path: /home/w12495/Software/apache-tomcat-6.0.28/logs/clicktocall-component-showcase.log
+
+sandpit-uidev:
+  base_url: http://dsb.sensis.com.au/uidev/clicktocall-component-showcase/clicktocall/
+  # TODO: set up for sandpit-uidev:
+  log_files:

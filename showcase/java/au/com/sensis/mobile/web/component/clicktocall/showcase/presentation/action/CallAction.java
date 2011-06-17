@@ -121,7 +121,7 @@ public class CallAction extends DumbAction implements ServletRequestAware {
     public String execute() {
         if (getXmlHttpRequestDetector().isXmlHttpRequest(getHttpServletRequest())) {
             if (logger.isInfoEnabled()) {
-                logger.info("AJAX reporting call - in a real app, reporting would occur here ...");
+                logger.info("AJAX reporting call for phone number '" + getPhoneNumber() + "' - in a real app, reporting would occur here ...");
             }
             return AJAX_SUCCESS_RESULT;
         } else {

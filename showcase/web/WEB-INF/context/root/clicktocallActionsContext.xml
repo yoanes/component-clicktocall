@@ -17,7 +17,7 @@
     </bean>
     
     <bean id="phoneOrFaxFactory" class="au.com.sensis.mobile.web.component.clicktocall.showcase.business.PhoneOrFaxFactory" />
-
     
+    <bean id="telephoneProtocolHandlerAction" class="au.com.sensis.mobile.web.component.clicktocall.showcase.presentation.action.TelephoneProtocolHandlerAction" />
     
 </beans>

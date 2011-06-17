@@ -1,0 +1,3 @@
+class LogAnalyserFactory
+
+end

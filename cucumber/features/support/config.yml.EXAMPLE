@@ -1,0 +1,11 @@
+dsk:
+  base_url: http://localhost:8080/whereismobile
+  #omniture_log_file_dir: /home/leonardo/Desktop
+
+dev:
+  base_url: http://dev.mobile.whereis.com.au
+  #omniture_log_file_dir: /home/leonardo/Desktop
+
+tst:
+  base_url: http://tst.mobile.whereis.com.au
+  #omniture_log_file_dir: /home/leonardo/Desktop

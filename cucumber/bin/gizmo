@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+# coding: utf-8
+
+require 'optparse'
+require 'active_support'
+
+$LOAD_PATH << File.dirname(__FILE__) + '/../lib'
+require 'gizmo'
+
+
+opts = OptionParser.new do |opts|
+
+  opts.on("-v", "--version") do
+    puts "gizmo #{IO.readlines(File.join(File.dirname(__FILE__), '..', 'VERSION'))}"
+  end
+
+end
+
+
+if ARGV.size == 0
+  puts "DRY up your acceptance tests. \ntype --help for a list of commands"
+  exit 1
+end
+
+opts.parse!

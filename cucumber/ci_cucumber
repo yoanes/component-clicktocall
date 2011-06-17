@@ -1,0 +1,110 @@
+#!/usr/bin/ruby
+
+#
+# Ruby script to start tests concurrently
+# It asssumes that your tomcat is running and the application has been deployed. 
+# By default, run agains dsk env but it can be overritten via command line. Eg.: ./ci_tomcat tst
+# 
+# All threads will start and kick-off tests concurrently. We may want to have between 3 and 6 threads running at the same time. 
+# But This range could change depending on the CI box capabilities.
+#
+# Before any java advocates get up and scream, Ruby Thread gives the sensation of multi-tasking system.
+# The execution will be apparently simultaneous for you, a kind of time-sharing or time-slice. 
+# All threads run under the same process main one and does NOT take advantage of multiples CPU's.
+# It doesn't matter because gets the job done!
+# 
+# http://rubylearning.com/satishtalim/ruby_threads.html
+#
+
+### setting global variables/properties ###
+@test_env = "dsk"
+@test_env = ARGV[0] if(!ARGV[0].nil? && ARGV[0] != "")
+puts "\n---> Running against environment: #{@test_env}\n"
+
+### Actual Threads ###
+init_time = Time.now
+puts "---------------> Initial time: #{Time.at(init_time).gmtime.strftime('%R:%S')}"
+
+### cleaning old html's and screenshots from previous tess...
+Dir.glob("reports/*.html") {|f| system("rm #{f}") }
+Dir.glob("reports/screenshots/*.*") {|f| system("rm #{f}") }
+
+threads = []
+tests = []
+# If you are a QA dude, you can re-arrange the test suite. Just follow the pattern bellow by copying the whole line.
+# Make sure that your test works. Copy the command(from 'bundle (...) to directions.feature) and run in your local machine.
+
+tests << "bundle exec cucumber features/generic/home*.feature       TEST_ENV=#{@test_env} -f html > reports/home.html --tags ~@wip"
+tests << "bundle exec cucumber features/generic/version*.feature       TEST_ENV=#{@test_env} -f html > reports/version.html --tags ~@wip"
+
+
+tests.size.times do |i|
+  threads[i] = Thread.new do
+      #sleep(rand(0)/10.0)
+      cmd = tests[i]
+      Thread.current["name"] = cmd.scan(/(features.*?.feature)/)
+      Thread.current["res"] = system(cmd)      
+  end
+end
+
+threads.each {|t| t.join;}
+
+has_error = false
+threads.each do |t|
+  if !has_error 
+    has_error = true if !t['res']
+  end  
+  result = t['res']? "pass": "fail"
+  puts "====> The thread #{t['name']} result is: #{result}"  
+end
+
+############# generate html report
+def generate_html_report
+  template = links = divs = ""
+  num = 1
+  Dir.glob("reports/*.html") do |file|
+   
+    new_content = File.open(file, "r").read
+    new_content.gsub!("lessthan","<")
+    new_content.gsub!("greaterthan",">")
+    #puts new_content
+    File.open(file, "w") do |f|
+      f.write new_content
+    end
+
+    filename = file
+    filename.gsub!("reports/", "")
+    
+    template = File.open("reports/templates/index_template.html", "r").read
+    links = links + "			<li><a href=\"#tabs-#{num}\">#{filename}</a></li>"
+    
+    divs = divs + "			<div id=\"tabs-#{num}\" class=\"iframe_container\">			
+      			   <iframe class=\"frm\" src=\"#{filename}\" width=\"100%\" height=\"100%\"></iframe>
+  			</div>"              
+    num = num + 1    
+  end  
+  template.gsub!("@links@", links)  
+  template.gsub!("@divs@", divs)
+    
+  File.open("reports/index.html", "w") do |new_file|
+    new_file.write(template)
+  end
+end
+
+generate_html_report 
+
+### Checking the result of all variables ###
+total_time = Time.now - init_time
+puts "\n______________________________________________________________________"
+puts "---------------> Total time: #{Time.at(total_time).gmtime.strftime('%R:%S')}"
+puts "______________________________________________________________________\n"
+
+
+############### generate exit code 
+if (has_error)  
+  raise "\nERROR: There have been some erros!!!!!!!!!!!!!!!!"
+else
+  puts "\n\n---------- COOL!!! it's all right! take a look at the report in cucumber/reports/index.html"  
+end
+
+
