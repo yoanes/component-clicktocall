@@ -6,7 +6,6 @@ Feature:
 
   Scenario: version page is accessible from the home page of the showcase
     Given I am using an "iphone"
-    And the device uses a click to call prefix of "tel:"
-    And I have accessed the showcase home page
+    And I have visited the Home page
     When I click the link "Version"
-    Then the system shows the "Version" page
+    Then the "Version" page should be displayed

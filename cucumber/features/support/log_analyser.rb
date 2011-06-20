@@ -8,7 +8,8 @@ class LogAnalyser
     end
   end
 
-  def new_deltas
+  def new_deltas(wait_seconds)
+    sleep wait_seconds
     result = LogDeltas.new
     @log_files.each do |e|
       new_delta = e.new_delta

@@ -3,8 +3,10 @@ dsk:
   log_files:
     - server: localhost
       log_file_path: /home/w12495/Software/apache-tomcat-6.0.28/logs/clicktocall-component-showcase.log
+  log_analyser_wait_seconds: 2
 
 sandpit-uidev:
   base_url: http://dsb.sensis.com.au/uidev/clicktocall-component-showcase/clicktocall/
   # TODO: set up for sandpit-uidev:
   log_files:
+  log_analyser_wait_seconds: 5

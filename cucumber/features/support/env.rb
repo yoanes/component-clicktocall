@@ -21,26 +21,27 @@ if !ENV["SENSIS_CAPYBARA_FIREFOX_PATH"].nil?
   Selenium::WebDriver::Firefox.path = ENV["SENSIS_CAPYBARA_FIREFOX_PATH"]
 end
 
-def register_capybara_drivers
-  profiles = {}
-  profiles["iphone"] = Devices.create_iphone_profile
-  profiles["nokia6120"] = Devices.create_nokia6120_profile
+$devices = {}
+$devices[Devices::iphone.name] = Devices::iphone
+$devices[Devices::nokia6120.name] = Devices::nokia6120
+$devices[Devices::pc_firefox.name] = Devices::pc_firefox
 
-  profiles.each_pair do |driver_name, profile|
-    driver_name = "selenium_" << driver_name
+def register_capybara_drivers
+  $devices.each_value do |device|
+    driver_name = "selenium_" << device.name
     Capybara.register_driver driver_name.to_sym do |app|  
 
       if ENV["DISABLE_COOKIES"]
         puts "_________________ Cookies have been Disabled___________".underline.bright.background(:magenta)
-        profile['network.cookie.cookieBehavior'] = 2 # 0: enables ; 2: disable all
+        device.profile['network.cookie.cookieBehavior'] = 2 # 0: enables ; 2: disable all
       else
-        profile['network.cookie.cookieBehavior'] = 0 # 0: enables ; 2: disable all
+        device.profile['network.cookie.cookieBehavior'] = 0 # 0: enables ; 2: disable all
       end
 
       # For capybara versions prior to '1.0.0.rc1'
       #Capybara::Driver::Selenium.new(app, :profile => profile)  
       # For capybara '1.0.0.rc1'
-      Capybara::Selenium::Driver.new(app, :profile => profile)  
+      Capybara::Selenium::Driver.new(app, :profile => device.profile)  
     end
   end
   
