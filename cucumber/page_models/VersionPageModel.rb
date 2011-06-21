@@ -6,7 +6,7 @@ module Pages
     include Spec::Expectations
     include Spec::Matchers
 
-    def initialize(capybara_page)
+    def initialize(device, capybara_page)
       @capybara_page = capybara_page
     end
 

@@ -21,10 +21,16 @@ if !ENV["SENSIS_CAPYBARA_FIREFOX_PATH"].nil?
   Selenium::WebDriver::Firefox.path = ENV["SENSIS_CAPYBARA_FIREFOX_PATH"]
 end
 
-$devices = {}
-$devices[Devices::iphone.name] = Devices::iphone
-$devices[Devices::nokia6120.name] = Devices::nokia6120
-$devices[Devices::pc_firefox.name] = Devices::pc_firefox
+def instatiate_global_devices
+  $devices = {}
+  puts "Devices.singleton_methods: #{Devices.singleton_methods}"
+  Devices.singleton_methods.each do |method|
+    current_device = Devices.send method.to_sym
+    if (current_device.class.eql? Devices::Device)
+      $devices[current_device.name] = current_device
+    end
+  end
+end
 
 def register_capybara_drivers
   $devices.each_value do |device|
@@ -47,8 +53,9 @@ def register_capybara_drivers
   
 end
 
+instatiate_global_devices
 register_capybara_drivers
-Capybara.default_driver = :selenium_iphone
+Capybara.default_driver = :selenium_iphone4_1
 Capybara.run_server = false
 Capybara.default_wait_time = 7
 
@@ -121,8 +128,3 @@ $XML_SIZE_ERROR = " - INCORRECT NUMBER OF XML's returned"
 # clean up old screenshots
 #system("rm -rf #{@tomcat_ci}/temp")
 system "rm -rf #{File.dirname(__FILE__)}/../../reports/screenshots/*.jpeg"
-
-
-
-
-
