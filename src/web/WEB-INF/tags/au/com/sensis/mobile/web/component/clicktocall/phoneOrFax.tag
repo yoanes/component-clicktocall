@@ -31,18 +31,16 @@
 <%@ attribute name="phoneOrFax" required="true"
         type="au.com.sensis.mobile.web.component.clicktocall.model.PhoneOrFax"
         description="Wrapper around the phone or fax number."%>
+<%@ attribute name="wrapperId" required="true"
+        description="Id of the HTML wrapper containing the phone or fax number."%>
 <%@ attribute name="faxClass" required="true" 
     description="CSS class to use for fax number divs."%>
 <%@ attribute name="phoneClass" required="true" 
     description="CSS class to use for phone number divs."%>
 <%@ attribute name="clickToCallUrl" required="true" 
     description="URL to invoke when the number is clicked - only used for devices that do not support AJAX."%>
-<%@ attribute name="allowIphoneAppScraping" required="false" 
-    description="Optional flag. If true, will set the phone number div id to 'phoneNumber'. 
-                 Therefore, only do this for at most one phone number on the page. 
-                 This feature is required by the iphone client app (on yellow)."%>
 <%@ attribute name="allowIphoneAppScrapingWpm" required="false" 
-    description="Optional flag. If true, will set the phone number span id to 'phoneNumber'. 
+    description="Optional flag. If true, will also wrap the phoneNumber in a span and set the id to 'phoneNumber'. 
                  Therefore, only do this for at most one phone number on the page. 
                  This feature is required by the iphone client app (on white)."%>
 
@@ -60,24 +58,12 @@
 <c:choose>
 
     <c:when test="${phoneOrFax.faxNumber}">
-        <div class="${faxClass}" id="faxNumber">${phoneOrFax.displayFormattedNumber}</div>
+        <div class="${faxClass}" id="${wrapperId}">${phoneOrFax.displayFormattedNumber}</div>
     </c:when>
 
     <c:otherwise>
 
-        <c:choose>
-            <c:when test="${allowIphoneAppScraping}">
-                <c:set var="phoneNumberId" value="phoneNumber"/>
-            </c:when>
-            <c:when test="${allowIphoneAppScrapingWpm}">
-                <c:set var="phoneNumberId" value="phoneNumberWpm"/>
-            </c:when>
-            <c:otherwise>
-                <base:autoIncId var="phoneNumberId" prefix="${componentName}-ph" />
-            </c:otherwise>
-        </c:choose>
-        
-        <div id="${phoneNumberId}" class="${phoneClass}"
+        <div id="${wrapperId}" class="${phoneClass}"
             ><c:choose>
                 <c:when test="${device.clickToCallSupported}">
                     <a href="${fn:trim(clickToCallUrl)}" class="clickToCallLink"
@@ -95,6 +81,14 @@
                 
             </c:choose
         ></div>
+        
+        <%--
+          - Set attributes into request scope, then include a JSP so that we can route through the 
+          - ContentRenderingFramework.
+          --%>
+        <c:set var="clicktocallComponentDevice" scope="request" value="${device}" />
+        <c:set var="clicktocallComponentWrapperId" scope="request" value="${wrapperId}" />
+        <jsp:include page="/WEB-INF/view/jsp/comp/clicktocall/phoneOrFaxJavaScript.crf" />
 
     </c:otherwise>
 
