@@ -1,3 +1,12 @@
+==== Version 3.0.1 (tag: clicktocall_v3_0_1) ====
+
+All phoneOrFaxJavaScript.jsp files fixed so that they only invoke the Call constructor function in 
+response to a window 'domready' event. This makes the JavaScript more robust in the event that the 
+order of loaded JS files is changed.  
+
+Upgrade steps
+- should be transparent.
+
 ==== Version 3.0.0 (tag: clicktocall_v3_0_0) ====
 
 Upgraded to CRF 2.0.11.

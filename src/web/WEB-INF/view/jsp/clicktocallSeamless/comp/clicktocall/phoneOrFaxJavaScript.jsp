@@ -14,10 +14,12 @@
     <c:when test="${fn:contains(deviceWtaiLibraries, 'WTA.Public.makeCall') or fn:contains(deviceWtaiLibraries, 'WTA.Public')}">
         <crf:script name="${wrapperId}-clickToCallInitWtai" type="text/javascript" device="${device}">
             (function() {
-                if(typeof(Call) != 'undefined') {
-                    var ajaxCall = new Call('wtai://wp/mc;');
-                    ajaxCall.initClickToCall('<c:out value="${wrapperId}"/>');
-                }
+                window.addEvent('domready', function () {
+	                if(typeof(Call) != 'undefined') {
+	                    var ajaxCall = new Call('wtai://wp/mc;');
+	                    ajaxCall.initClickToCall('<c:out value="${wrapperId}"/>');
+	                }
+                });
             })();
         </crf:script>
     </c:when>
@@ -27,10 +29,12 @@
         
         <crf:script name="${wrapperId}-clickToCallInitTel" type="text/javascript" device="${device}">
             (function() {
-                if(typeof(Call) != 'undefined') {
-                    var ajaxCall = new Call('tel:');
-                    ajaxCall.initClickToCall('<c:out value="${wrapperId}"/>');
-                }
+                window.addEvent('domready', function () {
+	                if(typeof(Call) != 'undefined') {
+	                    var ajaxCall = new Call('tel:');
+	                    ajaxCall.initClickToCall('<c:out value="${wrapperId}"/>');
+	                }
+	            });
             })();   
         </crf:script>
    </c:when>
