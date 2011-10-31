@@ -1,3 +1,7 @@
+==== Version 3.0.2 (tag: clicktocall_v3_0_2) ====
+add nokia N9 into the seamless click to call list. Nokia N9 at this present time includes the Nokia-N9 and all Meego devices 
+due to the non-unique UA pattern.
+
 ==== Version 3.0.1 (tag: clicktocall_v3_0_1) ====
 
 All phoneOrFaxJavaScript.jsp files fixed so that they only invoke the Call constructor function in 

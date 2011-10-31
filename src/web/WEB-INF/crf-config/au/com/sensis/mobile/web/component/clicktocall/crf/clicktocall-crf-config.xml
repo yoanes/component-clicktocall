@@ -13,7 +13,8 @@
         <group name="clicktocallSeamless" expr="device.isA('Apple-iPhone') or device.isA('Android-OS') 
             or device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
             or device.isA('Nokia-N85') or device.isA('Nokia-N95') or device.isA('Samsung-GT-C5220') 
-            or device.isA('SAGEM-HomeManager')" />
+            or device.isA('SAGEM-HomeManager')
+            or device.isA('Nokia-N9')" />
             
         <!-- Image category groups. -->
         <group name="HD800" expr="device.imageCategory eq 'HD800' or device.imageCategory eq 'HD1024'" />
