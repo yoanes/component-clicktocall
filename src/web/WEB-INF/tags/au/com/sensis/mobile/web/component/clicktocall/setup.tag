@@ -10,7 +10,7 @@
 <%@ taglib prefix="crf" uri="/au/com/sensis/mobile/crf/crf.tld"%>
 
 <%@ attribute name="device" required="true"
-    type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device"  
+    type="au.com.sensis.devicerepository.Device"  
     description="Device of the current user." %>
 <%-- allowIphoneAppScrapingWpm is deprecated but still allowed so as not to break old code.--%>    
 <%@ attribute name="allowIphoneAppScrapingWpm" required="false" 

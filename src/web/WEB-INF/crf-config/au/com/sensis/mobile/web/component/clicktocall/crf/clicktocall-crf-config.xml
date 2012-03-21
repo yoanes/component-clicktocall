@@ -8,12 +8,12 @@
     <groups>
     	<group name="iphone4" expr="device.isA('Apple') and device.getUserAgent() =~ '.*OS 4_.*'" />
     	
-        <group name="delayedAjax" expr="device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
+        <group name="delayedAjax" expr="device.isA('Nokia-6120-classic') or device.isA('Nokia-6720') or device.isA('Nokia-E51') 
             or device.isA('Nokia-N85') or device.isA('Nokia-N95')" />
-        <group name="clicktocallSeamless" expr="device.isA('Apple-iPhone') or device.isA('Android-OS') 
-            or device.isA('Nokia-6120c') or device.isA('Nokia-6720c') or device.isA('Nokia-E51') 
+        <group name="clicktocallSeamless" expr="device.isA('Apple-iPhone') or device.supportsOs('Android') 
+            or device.isA('Nokia-6120-classic') or device.isA('Nokia-6720') or device.isA('Nokia-E51') 
             or device.isA('Nokia-N85') or device.isA('Nokia-N95') or device.isA('Samsung-GT-C5220') 
-            or device.isA('SAGEM-HomeManager')
+            or device.isA('Sagem-HomeManager')
             or device.isA('Nokia-N9')" />
             
         <!-- Image category groups. -->

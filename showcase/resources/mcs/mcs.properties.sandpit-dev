@@ -1,8 +1,0 @@
-mcs.devicerepository.filepath=/app/smtestapp/sandpit-dev/clicktocall-component/devices/devices.mdpr
-mcs.policies.filepath=/app/smtestapp/sandpit-dev/clicktocall-component/policies
-
-mcs.mgrp.component.scripts.base.url=/dev/clicktocall-component-showcase/comp/
-mcs.mgrp.component.images.base.url=/dev/clicktocall-component-imageserver/images/component/
-
-mcs.cache.policies=false
-#mcs.script.asset.path=/clicktocall-component-showcase/scripts/

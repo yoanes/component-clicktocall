@@ -7,11 +7,9 @@
 <c:set var="device" value="${requestScope['clicktocallComponentDevice']}" />
 <c:set var="wrapperId" value="${requestScope['clicktocallComponentWrapperId']}" />
 
-<crf:deviceProperty var="deviceWtaiLibraries" device="${device}" property="UAProf.WtaiLibraries"/>
-<crf:deviceProperty var="deviceDialLinkInfo" device="${device}" property="dial.link.info"/>    
 <c:choose>
     <%-- Check for WTAI support --%>
-    <c:when test="${fn:contains(deviceWtaiLibraries, 'WTA.Public.makeCall') or fn:contains(deviceWtaiLibraries, 'WTA.Public')}">
+    <c:when test="${device.wtaiSupported}">
         <crf:script name="${wrapperId}-clickToCallInitWtai" type="text/javascript" device="${device}">
             (function() {
                 window.addEvent('domready', function () {
@@ -25,7 +23,7 @@
     </c:when>
     
    <%-- No WTAI support? Let's check for tel: support --%>
-    <c:when test="${deviceDialLinkInfo eq 'tel:'}">
+    <c:when test="${device.telSupported}">
         
         <crf:script name="${wrapperId}-clickToCallInitTel" type="text/javascript" device="${device}">
             (function() {

@@ -15,7 +15,7 @@
 <%@ taglib prefix="crf" uri="/au/com/sensis/mobile/crf/crf.tld"%>
 
 <%@ attribute name="device" required="true" 
-    type="au.com.sensis.wireless.common.volantis.devicerepository.api.Device" 
+    type="au.com.sensis.devicerepository.Device" 
     description="Device being used for the current request." %>
 <%@ attribute name="phoneOrFax" required="true"
         type="au.com.sensis.mobile.web.component.clicktocall.model.PhoneOrFax"
