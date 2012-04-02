@@ -1,4 +1,4 @@
-==== Version 4.0.???
+==== Version 4.0.0 (tag: clicktocall_v4_0_0) ====
 
 Migrated to use WURFL based CRF 3.x.
 Removed any Volantis dependencies.
@@ -6,7 +6,7 @@ Please CRF release notes for further details about the wurfl migration.
 
 Upgrade Steps:
 
-None.
+None. Do not upgrade to this unless you want the wurfl based device repository.
 
 ==== Version 3.0.2 (tag: clicktocall_v3_0_2) ====
 add nokia N9 into the seamless click to call list. Nokia N9 at this present time includes the Nokia-N9 and all Meego devices 
